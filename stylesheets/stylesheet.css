@@ -44,15 +44,35 @@ table {
   border-spacing: 0;
 }
 
+.leftcol {
+  width: 50%;
+  float: left;
+  padding: 20px 20px 20px 20px;
+}
+.rightcol {
+  width: 50%;
+  float: right;
+  padding: 20px 20px 20px 20px;
+}
+
+
+
+
+
+
 /*******************************************************************************
 Theme Styles
 *******************************************************************************/
 
+#home {
+  background: #f7f0de;
+}
+
 body {
   box-sizing: border-box;
   text-align: center;
-  color:white;
-  background: #212121;
+  color:black;
+  background: #fffcf4;
   font-size: 16px;
   font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -62,7 +82,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin: 10px 0;
   font-weight: 700;
-  color:white;
+  color:black;
   font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
   letter-spacing: -1px;
 }
@@ -465,4 +485,33 @@ Small Device Styles
   font-size: 66px;
   padding-top: 60px;
   text-align: center;
+}
+.column {
+  /*padding: 40px 40px 40px 40px;*/
+  text-align: justify
+}
+
+div.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+}
+
+ul {
+  text-align: left;
+}
+
+ol {
+  text-align: left;
+}
+
+#begin {
+
+  background-color: #DB6F31;
+  color: white;
+  font-weight: bold;
+  border: 20px 20px 20px 20px;
+  margin: 20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
+
 }
