@@ -12,14 +12,26 @@
 
 
       <title>Kindle</title>
-
     <script src="javascripts/jquery.min.js"></script>
     <script src="javascripts/jquery.fullPage.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#fullpage').fullpage();
+            /*var divElement = document.getElementById('viz1481423599363');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = '1004px';
+            vizElement.style.height = '669px';
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);*/
+
+            $('#fullpage').fullpage({
+            });
+
+
         });
+
+
     </script>
 
   </head>
@@ -99,6 +111,24 @@
 
 
         </div>
+        <!--
+        <div class="section" id="datasets1">
+
+            <div class="slide" id="slide1">
+             <div class='tableauPlaceholder' id='viz1481423599363' style='position: relative'><h2>Data Exploration</h2><noscript><a href='#'><img alt='This dataset has ~ 1 million reviews, ~60,000 products, and ~70,000 reviewers ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>
+
+            </div>
+
+            <div class="slide" id="slide2"><h2>Data Exploration</h2>
+
+            </div>
+            <div class="slide" id="slide3"><h2>Data Exploration</h2>
+
+            </div>
+        </div>-->
+
+
+
         <div class="section" id="recs">
           <h2>Recommending Previously Unseen Books</h2>
             <div class="col-md-6 column">
@@ -129,44 +159,58 @@
             </div>
 
         </div>
+        <div class="section" id="text-analysis">
+            <h2>Text Analysis</h2>
+            <div class="col-md-6 column">
+
+                <h3>Methods for Determining Text Attributes</h3>
+
+
+
+            </div>
+            <div class="col-md-6 column">
+
+            <h3>Text Analysis</h3>
+            The text from each user's set of reviews was used as one method for determining similarity between users.
+            The following process was used to complete the text analysis:
+            <ol>
+                <li>The dataset was grouped by user, and for each user, text from all reviews was combined into one block of text.</li>
+                <li>A count vectorizer was used to get counts of all words in each block of text.
+                    A list of standard English stop words was used to remove very common words and prepositions from the text.</li>
+                <li>Text was cleaned of all html entities.</li>
+                <li>The result of the above is a "utility matrix" of users as rows and word counts as columns.</li>
+                <li>Next, the TF-IDF score was calculated for each word, such that the word counts in the utility matrix were updated with these scores.</li>
+                <li>The cosine similarity between each pair of users was calculated using their vectors of TF-IDF scores.</li>
+            </ol>
+
+            </div>
+        </div>
         <div class="section" id="ratings">
           <h2>Ratings Predictions</h2>
             <div class="col-md-6 column">
 
-                <h3>Text Analysis</h3>
-
-                <p>The text from each user’s set of reviews can be used to generate the similarity matrix for
-                the user-based collaborative filtering above. Then, the similarity matrix can be combined with one
-                generated from the user ratings to improve the accuracy of identifying most similar users.
-                For the text analysis we are using the following process: </p>
-
-                <ol>
-                <li>For each user, combine all review text into one block of text.</li>
-                <li>Get counts of all words in each user’s text using a count vectorizer. Use standard English stop words, and remove HTML entities before calculating.</li>
-                <li>Generate a utility matrix of users vs. word count vector.</li>
-                <li>Calculate the TF-IDF scores for each word, and generate an updated utility matrix with these scores.</li>
-                <li>Calculate the cosine similarity between each pair of users by comparing their vectors of TF-IDF scores.</li>
-                <li>Create a sorted matrix, such that for each user, we can find their cohort of N most similar users.</li>
-                </ol>
-
-
-
-            </div>
-
-            <div class="col-md-6">
-
                 <h3>Methods Considered</h3>
                 <ul>
-                    <li>Simple Average</li>
-                    <li>Ratings-based User-based collaborative filtering</li>
-                    <li>Review-based User-based collaborative filtering</li>
-                    <li>Matrix Factorization</li>
+                    <li><strong>Simple Average:</strong></li>
+                    <li><strong>Ratings-based User-based collaborative filtering</strong></li>
+                    <li><strong>Review-based User-based collaborative filtering</strong></li>
+                    <li><strong>Matrix Factorization</strong></li>
                 </ul>
 
                 <img style="width: 60%"src="images/image19.png"/>
 
+
+
+            </div>
+
+
+            <div class="col-md-6">
+            <h3>Results</h3>
+
+
             </div>
         </div>
+
         <div class="section" id="conclusion">
             <h2>Conclusions & Future Work</h2>
           <div class="col-md-6 column">
@@ -223,14 +267,35 @@
                 </p>
             </div>
         </div>
+        <div class="section" id="references">
+            <h2>References</h2>
+            <div class="col-md-12 column">
+                    <p>
+                        [1] Image-based recommendations on styles and substitutes
+                        J. McAuley, C. Targett, J. Shi, A. van den Hengel
+                        SIGIR, 2015
+                    </p>
+                    <p>
+                        [2] Inferring networks of substitutable and complementary products
+                        J. McAuley, R. Pandey, J. Leskovec
+                        Knowledge Discovery and Data Mining, 2015
+                    </p>
+                    <p>
+                        [3] The BellKor Solution to the Netflix Grand Prize
+                        Y. Koren. 2008.
+                    </p>
 
+
+            </div>
+
+        </div>
         
     </div>
   </body>
 
 
 <script src="javascripts/bootstrap.min.js"></script>
-<script src="javascripts/script.js"></script>
+<!--<script src="javascripts/script.js"></script>-->
 <script src="javascripts/main.js"></script>
 
 </html>
