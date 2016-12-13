@@ -493,9 +493,7 @@ Small Device Styles
   /*padding: 40px 40px 40px 40px;*/
   text-align: justify
 }
-.tableauPlaceholder {
-  margin-left: 5%;
-}
+
 div.center {
   margin-left: auto;
   margin-right: auto;
@@ -532,4 +530,17 @@ ol {
   padding: 10px;
   position: relative;
 
+}
+#conclusion img {
+  display:block;
+  margin:auto;
+  padding-bottom:15px;
+  padding-top:15px;:
+}
+.section {
+  padding-left: 50px;
+  padding-right:50px;
+}
+img {
+  padding-top: 15px;
 }
