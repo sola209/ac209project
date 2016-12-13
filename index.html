@@ -81,47 +81,57 @@
 
         </div>
         <div class="section" id="overview">
-          <h2>Overview & Motivation</h2>
+          <h2 class="sectiontitle">Overview & Motivation</h2>
 
             <div class="col-md-6 column">
 
                 <h3>Introduction</h3>
                 <p>
-                    <strong>Anthony Proposal: </strong>The Netflix Challenge - which completed in 2009 - sparked significant research interest in recommendation systems based on user ratings and reviews.
-                    Rather than movies, we present and evaluate methods for recommending another favorite pasttime: books.  Illustrating the significance of this research, the Amazon Kindle market alone rivals that of Netflix ($5bn vs. $6bn).
-                    In our study, we recommend Kindle books to users reliably and efficiently, through analyzing Amazon Kindle Store review data to understand what types of users correlate strongest with groups of products. <br>
-
-                   <br> <strong>Original: </strong>Development of recommender systems based on user ratings and reviews is an area of major research.
-                We present and evaluate methods for implementing systems that can recommend books to users reliably and efficiently,
-                through analyzing Amazon Kindle Store review data to understand what types of users correlate strongest with groups of products.
+                    The Netflix Challenge, which completed in 2009, sparked significant research interest in
+                    recommendation systems based on user ratings and reviews. Rather than movies, we present and
+                    evaluate methods for recommending another favorite pasttime: books.  Illustrating the significance
+                    of this research, the Amazon Kindle market alone rivals that of Netflix by size ($5bn vs. $6bn).
+                    In our study, we recommend Kindle books to users reliably and efficiently, through analyzing
+                    Amazon Kindle Store review data to understand what types of users correlate strongest with
+                    groups of products. <br>
 
                 </p>
-
-                <h3>Features</h3>
-                <ul>
-                    <li>Recommend a list of books based on a user’s rating and review history</li>
-                    <li>Predict a user’s 5-star rating for any book</li>
-
-                </ul>
+                <p>
+                    The Netflix Challenge also provides useful context and motivation for this project, as the Kindle data
+                    is both more sparse and less varied. As the following pie graphs demonstrate, ratings are disproportionately
+                    skewed towards the 4 and 5-star ratings categories, re-emphasizing the need for product and user
+                    behaviour-based approaches to recommendation.
+                </p>
+                <center><img src="images/Asset11.png" style="width: 75%"/></center>
 
             </div>
             <div class="col-md-6 column">
 
                 <h3>Datasets</h3>
-
+                <p> The following datasets were consulted in the preparation of this report: </p>
                 <ol>
                     <li>
-                        Amazon Kindle Store Ratings and Reviews: Includes ~1 million records of 5-star ratings,
-                        complete review text, timestamp, product ID, and user ID. Filtered to extract users and
-                        products that have at least five reviews each.
+                        Amazon Kindle Store <strong>Ratings and Reviews:</strong> Includes ~1 million records of ratings, with
+                        complete review text, timestamp, product ID, rating out of 5 and user ID for each review.
+                        The dataset is automatically filtered to only include users that have reviewed at least five
+                        products, and products that have at been reviewed at least five times each.
                     </li>
                     <li>
-                        Amazon Kindle Store Product Metadata: Includes product information such as name,
-                        price, sales rank, and items that were also bought and also viewed.
+                        Amazon Kindle Store <strong>Product Metadata:</strong> Includes ~500,000 records of product, with
+                        the name, product ID, description, price, category, and items that were also bought and also viewed
+                        for each recorded product.
                     </li>
 
                 </ol>
-                <img style="width: 80%"src="images/image16.png"/>
+                <h3>Project Features</h3>
+                <p>
+                    Our project proposes the following two categories of analysis pertaining to the goal above:
+                </p>
+                <ul>
+                    <li>Recommend a list of books based on a user’s rating and review history</li>
+                    <li>Predict a user’s 5-star rating for any book</li>
+
+                </ul>
 
 
             </div>
@@ -130,7 +140,10 @@
         </div>
 
         <div class="section" id="datasets1">
-            <h2>Data Exploration and Visualization</h2>
+            <h2 class="sectiontitle">Data Exploration and Visualization</h2>
+            <center><p class = 'carouselbox'>This carousel cycles through primary observations learned through the data exploration phase of the
+            project; namely, understanding the distribution of review frequencies across users, quantifying the
+            relationship between ratings and review helpfulness, and other summary metrics.</p></center>
             <div class="slide" id="slide2">
                 <div class='tableauPlaceholder' id='viz1481611567442' style='position: relative'><noscript><a href='#'><img alt='Reviews are mostly 5-star, and from 2013-2014 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481611567442');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='669px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
             </div>
@@ -148,7 +161,7 @@
 
 
         <div class="section" id="recs">
-          <h2>Recommending Previously Unseen Books</h2>
+          <h2 class="sectiontitle">Recommending Previously Unseen Books</h2>
             <div class="col-md-6 column">
 
                 <h3>Method 1: User-based Collaborative Filtering</h3>
@@ -181,7 +194,7 @@
 
         </div>
         <div class="section" id="text-analysis">
-            <h2>Text Analysis</h2>
+            <h2 class="sectiontitle">Text Analysis</h2>
             <div class="col-md-6 column">
 
                 <h3>Methods for Determining Text Attributes</h3>
@@ -212,7 +225,7 @@
             </div>
         </div>
         <div class="section" id="user-based">
-            <h2>User Based Collaborative Filtering</h2>
+            <h2 class="sectiontitle">User Based Collaborative Filtering</h2>
             <div class="col-md-6 column">
             </div>
             <div class="col-md-6 column">
@@ -220,7 +233,7 @@
             </div>
         </div>
         <div class="section" id="ratings">
-          <h2>Ratings Predictions</h2>
+          <h2 class="sectiontitle">Ratings Predictions</h2>
             <div class="col-md-6 column">
 
                 <h3>Methods Considered</h3>
@@ -247,7 +260,7 @@
 
 
         <div class="section" id="conclusion">
-            <h2>Conclusions & Future Work</h2>
+            <h2 class="sectiontitle">Conclusions & Future Work</h2>
           <div class="col-md-6 column">
               <h3>Conclusions</h3>
               <p>Improving on Simple Averaging for Kindle Ratings Predictions proved difficult.
