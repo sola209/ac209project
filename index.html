@@ -342,13 +342,19 @@
 
         <div class="section" id="appendixMF">
             <h2>Appendix A: Matrix Factorization</h2>
-            <div class="col-md-6 column">
+            <div class="col-md-4 column">
 
                 <h3>Overview</h3>
-                <ul>
-                    <li><strong>General Concept: </strong> Breaking a single matrix into two features matrices </li>
-                    <li><strong>Math</strong></li>
-                </ul>
+                <p>
+                Our goal is to turn the user-item matrix <strong>R</strong> as per below:<br>
+                    <img style="width: 350px"src="images/MF/MF_1.png"/> <br>
+                Into a completely filled predictions matrix <strong>R&#770 </strong> as per below: <br>
+                <img style="width: 350px"src="images/MF/MF_2.png"/><br>
+                    By finding feature matrices <strong>P</strong> and <strong>Q</strong> to lead to:
+                    <strong>R&#8776P*Q<sup>T</sup>=R&#770</strong><br>
+                    <img style="width: 350px"src="images/MF/MF_3.png"/><br>
+
+                </p>
 
 
 
@@ -356,9 +362,10 @@
             </div>
 
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <h3>Application</h3>
-                <img style="width: 75%"src="images/Asset 9.png"/>
+                <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
+                <img style="width: 400px"src="images/MF/MF_1.png"/>
                 <ul>
                     <li><strong>Implementation by Hand: </strong> Breaking a single matrix into two features matrices </li>
                     <li><strong>GraphLab Library: </strong></li>
