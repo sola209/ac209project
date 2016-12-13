@@ -15,7 +15,7 @@
     <script src="javascripts/jquery.min.js"></script>
     <script src="javascripts/jquery.fullPage.min.js"></script>
 
-    <!---<script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function() {
             /*var divElement = document.getElementById('viz1481423599363');
             var vizElement = divElement.getElementsByTagName('object')[0];
@@ -27,12 +27,12 @@
 
             $('#fullpage').fullpage({
             });
-
+            $.fn.fullpage.setAutoScrolling(false)
 
         });
 
 
-    </script>-->
+    </script>
 
   </head>
 
@@ -85,6 +85,7 @@
                 <ul>
                     <li>Recommend a list of books based on a user’s rating and review history</li>
                     <li>Predict a user’s 5-star rating for any book</li>
+
                 </ul>
 
             </div>
@@ -111,21 +112,22 @@
 
 
         </div>
-        <!--
+
         <div class="section" id="datasets1">
-
+            <h2>Data Exploration and Visualization</h2>
+            <div class="slide" id="slide2">
+                <div class='tableauPlaceholder' id='viz1481611567442' style='position: relative'><noscript><a href='#'><img alt='Reviews are mostly 5-star, and from 2013-2014 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481611567442');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='669px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
             <div class="slide" id="slide1">
-             <div class='tableauPlaceholder' id='viz1481423599363' style='position: relative'><h2>Data Exploration</h2><noscript><a href='#'><img alt='This dataset has ~ 1 million reviews, ~60,000 products, and ~70,000 reviewers ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>
-
+                <div class='tableauPlaceholder' id='viz1481611461259' style='position: relative'><noscript><a href='#'><img alt='This dataset has ~ 1 million reviews, ~60,000 products, and ~70,000 reviewers ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481611461259');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='669px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
             </div>
-
-            <div class="slide" id="slide2"><h2>Data Exploration</h2>
-
+            <div class="slide" id="slide3">
+                <div class='tableauPlaceholder' id='viz1481611618496' style='position: relative'><noscript><a href='#'><img alt='Most reviewers have written 5-10 reviews ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481611618496');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='669px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
             </div>
-            <div class="slide" id="slide3"><h2>Data Exploration</h2>
-
+            <div class="slide" id="slide4">
+                <div class='tableauPlaceholder' id='viz1481611651941' style='position: relative'><noscript><a href='#'><img alt='Reviews that have a higher rating are rated as more helpful ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz4' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz4&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481611651941');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='669px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
             </div>
-        </div>-->
+        </div>
 
 
 

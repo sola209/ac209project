@@ -520,3 +520,16 @@ ol {
   padding: 20px 20px 20px 20px;
 
 }
+/* Laura's additions
+.slide{
+  margin-left:150px;
+  margin-right:150px;
+}*/
+.tableauPlaceholder {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+
+}
