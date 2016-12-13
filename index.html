@@ -14,8 +14,11 @@
       <title>Kindle</title>
     <script src="javascripts/jquery.min.js"></script>
     <script src="javascripts/jquery.fullPage.min.js"></script>
+      <script src="javascripts/d3.js"></script>
+      <script src="javascripts/d3.min.js"></script>
 
-    <script type="text/javascript">
+
+      <script type="text/javascript">
         $(document).ready(function() {
             /*var divElement = document.getElementById('viz1481423599363');
             var vizElement = divElement.getElementsByTagName('object')[0];
@@ -60,10 +63,20 @@
         <!-- HEADER -->
 
         <div class="section" id="home">
-              <h2>Rekindling Your Inner Reader: </h2>
+            <div style="width: 50%; float: right" id="right">
+                <br>
+                <br>
+              <h1>Rekindling Your Inner Reader: </h1>
                 <h3 style="margin-bottom: 80px">A Recommendation System for the Amazon Kindle Store</h3>
             <a id = 'begin' href="#overview">BEGIN</a>
-              <img src="images/Amazon-yellow-arrow.png">
+              <!--<img src="images/Amazon-yellow-arrow.png">-->
+                <br>
+                <br>
+                <br>
+                <h3>Team SOLA</h3>
+                <h4>Sarah Mohamed, Omar Abboud, Laura Ware, & Anthony Soroka</h4>
+            </div>
+            <div style="width: 50%; float: left; height: 649px" id="left"><div id="force" style="width: 100%; height: 100%"></div></div>
 
 
         </div>

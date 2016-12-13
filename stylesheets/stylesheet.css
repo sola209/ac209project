@@ -544,3 +544,30 @@ ol {
 img {
   padding-top: 15px;
 }
+
+/* Omar's Styles */
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+circle {
+  stroke: #hhh;
+  stroke-width: 1.5px;
+}
+
+.node:hover text {
+  display: inline;
+}
+
+.node text {
+  display: none;
+  font: 10px sans-serif;
+}
+
+
+svg {
+  width: 604px;
+  height: 649px;
+}
