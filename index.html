@@ -161,16 +161,26 @@
             <h2 class="sectiontitle">50 Shades of Amazon</h2>
             <div class="col-md-6 column">
 
-                <h3>Overrepresentation of Romance</h3>
+                <h3>Loving Romance: Social Implications</h3>
 
-                <p>Incredibly 51% of the Reviews were Romance Novels (while only 18% of the products were Romance Novels).</p>
-                <div style="text-align:center"><img style="width: 75%"src="images/TopicData/TopicData1.png"/></div> <br><br>
-                <div style="text-align:center"><img style="width: 75%"src="images/TopicData/TopicData2.png"/></div> <br><br>
-
+                <p>Incredibly 18% of the MetaData products are Romance novels, yet 51% of the Reviews came from these Romance novels.</p>
+                <div style="text-align:center"><img style="width: 500px"src="images/TopicData/TopicData1.png"/></div> <br><br>
+                <p>Beyond the realms of our project, this potentially highlights an alarming social trend that people are investing heavily
+                    in entertainment.  Specifically in the chart to the right, we see relative to the variety of products that the Kindle store offers
+                 the only subjects that are overrepesented are Romance, Mystery, Science Fiction, Horror, and Erotica.  On the contrary, the most underrepresented subjects
+                are History, Math, Technology, Politics and Business.</p>
             </div>
 
             <div class="col-md-6 column">
-                <h3>Impact on Recommendations</h3>
+
+                <h3>Impact on Ratings Predictions</h3>
+                <p>Below illustrates <strong>(% of Reviews) / (% of MetaData Products)</strong>. </p>
+                <div style="text-align:center"><img style="width: 500px"src="images/TopicData/TopicData2.png"/></div> <br><br>
+                <p>The fact that the majority of the Review data are from a single genre makes surpassing Baseline Rating Predictions models
+                more difficult.  Specifically, our Ratings Prediction systems do not particularly benefit from determining what genre the user likes.  Instead our model
+                    needs to determine, within the user's genre of choice, what differentiates a great book from a good book from the
+                users perspective.</p>
+
 
             </div>
         </div>
@@ -353,7 +363,7 @@
 
                 <p>The initial baseline is to simply predict the average of all the train data. Average Kindle Rating is a high 4.35, and by using this simple method we already
                     achieve a low RMSE of .89 (as illustrated below).</p>
-                <div style="text-align:center"><img style="width: 50%"src="images/SA/SA_1.png"/></div> <br><br>
+                <div style="text-align:center"><img style="width: 50%"src="images/SA/SA_3.png"/></div> <br><br>
                 <p>Note, for the Netflix challenge, teams were trying to achieve
                     an RMSE of .855.  This again illustrates the lack of variance within this data.</p>
             </div>
