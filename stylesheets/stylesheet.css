@@ -44,15 +44,37 @@ table {
   border-spacing: 0;
 }
 
+.leftcol {
+  width: 50%;
+  float: left;
+  padding: 20px 20px 20px 20px;
+}
+.rightcol {
+  width: 50%;
+  float: right;
+  padding: 20px 20px 20px 20px;
+}
+
+/*
+
+.section {
+  width: 100%;
+  height: 800px;
+}*/
+
 /*******************************************************************************
 Theme Styles
 *******************************************************************************/
 
+#home {
+  background: #f7f0de;
+}
+
 body {
   box-sizing: border-box;
   text-align: center;
-  color:white;
-  background: #212121;
+  color:black;
+  background: white;
   font-size: 16px;
   font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -62,7 +84,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin: 10px 0;
   font-weight: 700;
-  color:white;
+  color:black;
   font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
   letter-spacing: -1px;
 }
@@ -73,13 +95,44 @@ h1 {
 }
 
 h2 {
-  padding-bottom: 10px;
-  font-size: 32px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-size: 50px;
   background: url('../images/bg_hr.png') repeat-x bottom;
 }
 
+.sectiontitle {
+  font-size: 40px;
+}
+
+.tableauarea {
+  margin: 0 0 170px 0;
+}
+
+.carouselbox {
+
+  width: 50%;
+  border: 1px solid black;
+  background-color: #fbf9f1;
+  margin: 4px 4px 4px 4px;
+  padding: 8px 8px 8px 8px;
+  border-radius: 15px;
+
+}
+
+.collabbox {
+
+  width: 60%;
+  border: 1px solid black;
+  background-color: #fbf9f1;
+  margin: 4px 4px 4px 4px;
+  padding: 8px 8px 8px 8px;
+  border-radius: 15px;
+
+}
+
 h3 {
-  font-size: 24px;
+  font-size: 40px;
 }
 
 h4 {
@@ -438,10 +491,6 @@ Small Device Styles
 #menu li.active a{
   color: #fff;
 }
-#menu li.active-link>a{
-  border-bottom: 1px solid #FF9900;
-
-}
 
 #menu{
   background: #212121;
@@ -462,13 +511,96 @@ Small Device Styles
 
 .spacer {
     width: 100%;
-    height: 50px;
+    height: 40px;
 }
 
 #home h1 {
   font-size: 66px;
   padding-top: 60px;
   text-align: center;
+}
+.column {
+  /*padding: 40px 40px 40px 40px;*/
+  text-align: justify
+}
+
+div.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+}
+
+ul {
+  text-align: left;
+}
+
+ol {
+  text-align: left;
+}
+
+#begin {
+
+  background-color: #DB6F31;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+  border: 20px;
+  margin: 20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
+
+}
+/* Laura's additions
+.slide{
+  margin-left:150px;
+  margin-right:150px;
+}*/
+.tableauPlaceholder {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+
+}
+#conclusion img {
+  display:block;
+  margin:auto;
+  padding-bottom:15px;
+  padding-top:15px;:
+}
+.section {
+  padding-left: 50px;
+  padding-right:50px;
+}
+img {
+  padding-top: 15px;
+}
+
+/* Omar's Styles */
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+circle {
+  stroke: #hhh;
+  stroke-width: 1.5px;
+}
+
+.node:hover text {
+  display: inline;
+}
+
+.node text {
+  display: none;
+  font: 10px sans-serif;
+}
+
+
+svg {
+  width: 604px;
+  height: 649px;
 }
 
 /*Everything relating to recommendations*/
