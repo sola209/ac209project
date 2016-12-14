@@ -618,8 +618,8 @@ svg {
 
 #genres {
   position: relative;
-  width: 70%;
-  margin: 0 auto;
+  width: 100%;
+  margin: auto;
   height: 200px;
 }
 
@@ -631,7 +631,6 @@ svg {
 #genre-romance img, #genre-thriller img, #genre-uk img {
   position:absolute;
   opacity:1;
-  text-align: center;
   height: 150px;
 }
 
@@ -659,9 +658,9 @@ svg {
   border: 2px solid grey;
 }
 
-#genre-select .row {
+/*#genre-select .row {
   margin: 20px;
-}
+}*/
 
 .rec-images {
   position:absolute;
@@ -673,4 +672,10 @@ svg {
   display:inline-block;
   width:10%;
   margin:auto;
+}
+
+#rec-profiles {
+  position: relative;
+  width:100%;
+  margin: auto;
 }
