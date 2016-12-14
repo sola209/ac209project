@@ -491,10 +491,6 @@ Small Device Styles
 #menu li.active a{
   color: #fff;
 }
-#menu li.active-link>a{
-  border-bottom: 1px solid #FF9900;
-
-}
 
 #menu{
   background: #212121;
@@ -607,7 +603,6 @@ svg {
   height: 649px;
 }
 
-
 /*Everything relating to recommendations*/
 
 #genre-select, {
@@ -628,6 +623,12 @@ svg {
   width: 100%;
 }
 
+#genre-romance .col-md-4, #genre-thriller .col-md-4, #genre-uk .col-md-4 {
+  margin: auto;
+  width: 100%;
+}
+
+
 #genre-romance img, #genre-thriller img, #genre-uk img {
   position:absolute;
   opacity:1;
@@ -635,18 +636,18 @@ svg {
 }
 
 .img1 {
-  top: 0px;
+  top: 15px;
   left: 0px;
 }
 
 .img2 {
-  top: 20px;
-  left: 30px;
+  top: 25px;
+  left: 40px;
 }
 
 .img3 {
-  top: 40px;
-  left: 60px;
+  top: 35px;
+  left: 80px;
 }
 
 #genres img:hover {
