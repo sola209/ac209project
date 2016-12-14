@@ -109,27 +109,30 @@ function dragended(d) {
   $('#rec-images-2').fadeOut(1000);
 
 var romance = d3.select("#genre-romance");
-var thriller = d3.select("#genre-thriller");
-var uk = d3.select("#genre-uk")
+var selfhelp = d3.select("#genre-selfhelp");
+var dystopia = d3.select("#genre-dystopia")
 var similar_user = d3.select("#similar-user")
 
 romance.on('click', function (e) {
-    similar_user.html("Your interests most closely match the user <a href=''>USERNAME</a>, who read the following titles: <br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5.");  
+    similar_user.html("Your interests most closely match the user <a href='https://www.amazon.com/gp/pdp/profile/AZ2EXXGD7FAD4'>Avidreader</a>, who read the following titles: " + 
+        "<br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5.");  
     $('#rec-images-0').fadeIn(1000);
     $('#rec-images-1').fadeOut(1000);
     $('#rec-images-2').fadeOut(1000);    
 
 });
 
-thriller.on('click', function (e) {
-    similar_user.html("Your interests most closely match the user <a href=''>USERNAME</a>, who read the following titles: <br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5.");  
+selfhelp.on('click', function (e) {
+    similar_user.html("Your interests most closely match the user <a href='https://www.amazon.com/gp/pdp/profile/AA5HLEE8ND8TJ'>CagleVision</a>, who read the following titles: " + 
+        "<br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5.");  
     $('#rec-images-0').fadeOut(1000);
     $('#rec-images-1').fadeIn(1000);
     $('#rec-images-2').fadeOut(1000);
 });
 
-uk.on('click', function (e) {
-    similar_user.html("Your interests most closely match the user <a href=''>USERNAME</a>, who read the following titles: <br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5.");  
+dystopia.on('click', function (e) {
+    similar_user.html("Your interests most closely match the user <a href='https://www.amazon.com/gp/pdp/profile/A2G5IFYYHFIQNB'>USN Chief, Ret..VT Town</a>, who read the following titles: " + 
+        "<br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5."); 
     $('#rec-images-0').fadeOut(1000);
     $('#rec-images-1').fadeOut(1000);
     $('#rec-images-2').fadeIn(1000);

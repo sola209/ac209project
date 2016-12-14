@@ -622,18 +622,18 @@ svg {
   height: 200px;
 }
 
-#genre-romance, #genre-thriller, #genre-uk {
+#genre-romance, #genre-selfhelp, #genre-dystopia {
   margin: auto;
   width: 100%;
 }
 
-#genre-romance .col-md-4, #genre-thriller .col-md-4, #genre-uk .col-md-4 {
+#genre-romance .col-md-4, #genre-selfhelp .col-md-4, #genre-dystopia .col-md-4 {
   margin: auto;
   width: 100%;
 }
 
 
-#genre-romance img, #genre-thriller img, #genre-uk img {
+#genre-romance img, #genre-selfhelp img, #genre-dystopia img {
   position:absolute;
   opacity:1;
   height: 150px;
@@ -645,12 +645,12 @@ svg {
 }
 
 .img2 {
-  top: 15px;
+  top: 25px;
   left: 40px;
 }
 
 .img3 {
-  top: 15px;
+  top: 35px;
   left: 80px;
 }
 
@@ -659,7 +659,7 @@ svg {
     z-index: 1001;
 }
 
-#genre-romance:hover, #genre-thriller:hover, #genre-uk:hover {
+#genre-romance:hover, #genre-selfhelp:hover, #genre-dystopia:hover {
   border: 2px solid grey;
 }
 
