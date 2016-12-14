@@ -335,11 +335,15 @@
 
                 <h3>Methods Considered</h3>
                 <ul>
-                    <li><strong>Simple Average: </strong>Baseline models using a combination of Train Data's Total Population Avg., Item Avg., and User Avg. Rating. See <i>Appendix A</i> for more details.</li>
+                    <li><strong>Simple Average: </strong>Baseline models using a combination of Train Data's Total Population Avg., Item Avg., and User Avg. Rating.</li>
                     <li><strong>Ratings-based User-based collaborative filtering</strong></li>
                     <li><strong>Review-based User-based collaborative filtering</strong></li>
-                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix. See <i>Appendix B</i> for more details.</li>
+                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix.</li>
                 </ul>
+
+                <p>We managed to improve our Baseline Constant Average Predict model of .89 with an ensemble collaborative filtering model of .73.
+                Perhaps more interesting is why the Baseline Simple Averaging model (which produced an RMSE) was so difficult to surpass.</p>
+                <div style="text-align:center"><img style="width: 50%"src="images/RatingsPredict/NFAZ_Stats.png"/> </div><br><br>
 
 
 
@@ -349,7 +353,8 @@
 
             <div class="col-md-6">
                 <h3>Results</h3>
-                <img style="width: 75%"src="images/Asset 9.png"/>
+                <img style="width: 60%"src="images/Asset 9.png"/>
+                <p>Placeholder : explain RMSE</p>
 
 
             </div>
