@@ -184,67 +184,70 @@
             below in detail: user-based and item-based collaborative filtering. The intersection set of books outputted by
             both models form the final recommendations, and are ordered by their overall popularity in the dataset by
             average review.</p></center>
-            <div style="height: 600px">
-            <div class="col-md-6 column">
+            <!-- <div style="height: 600px"> -->
+            <div class='row'>
+              <div class="col-md-6 column">
 
-                <h3>Method 1: User-based Collaborative Filtering</h3>
-                <p>The user-based collaborative filtering model inputs a user ID and identifies that user’s position in a
-                    similarity matrix comprising 5000 randomly sampled users from the original universe of Amazon kindle reviewers.
-                    Matrix entries correspond to the scores users assigned to products, and for a given input user,
-                    the model calculates the user-row’s cosine similarity to all other rows in the matrix. Finally,
-                    with the given user’s most similar users on hand, the model recommends items liked by those users
-                    for final consideration.</p>
+                  <h3>Method 1: User-based Collaborative Filtering</h3>
+                  <p>The user-based collaborative filtering model inputs a user ID and identifies that user’s position in a
+                      similarity matrix comprising 5000 randomly sampled users from the original universe of Amazon kindle reviewers.
+                      Matrix entries correspond to the scores users assigned to products, and for a given input user,
+                      the model calculates the user-row’s cosine similarity to all other rows in the matrix. Finally,
+                      with the given user’s most similar users on hand, the model recommends items liked by those users
+                      for final consideration.</p>
 
-                <p>This is done by filtering products of the most similar users to those that were positively reviewed
-                by that user. The intersection set of liked products across all similar users is outputted to the input
-                user for recommendation. What is important to note is that the list is unordered, as the final recommendation
-                list is ordered after hybridization is completed.</p>
-                <img style="width: 80%"src="images/sketch2.png"/>
+                  <p>This is done by filtering products of the most similar users to those that were positively reviewed
+                  by that user. The intersection set of liked products across all similar users is outputted to the input
+                  user for recommendation. What is important to note is that the list is unordered, as the final recommendation
+                  list is ordered after hybridization is completed.</p>
+                  <img style="width: 80%"src="images/sketch2.png"/>
 
+              </div>
+              <div class="col-md-6 column">
+
+                  <h3>Method 2: Item-based Network Filtering</h3>
+                  <p>
+                      The item-based collaborative filtering model begins with the products that were most liked by an
+                      input user. These products are then cross-referenced with all products from the meta-dataset that
+                      were either also bought or also viewed with those products. Finally, this new "universe of products"
+                      is filtered by those that, on average, were positively reviewed across all users.
+                  </p>
+                  <p>
+                      The products from this final set that have not already been reviewed by the user are outputted for
+                      final recommendation.
+                  </p>
+                  <img style="width: 80%" src="images/sketch1.png"/>
+
+              </div>
             </div>
-            <div class="col-md-6 column">
+            <!-- </div> -->
 
-                <h3>Method 2: Item-based Network Filtering</h3>
-                <p>
-                    The item-based collaborative filtering model begins with the products that were most liked by an
-                    input user. These products are then cross-referenced with all products from the meta-dataset that
-                    were either also bought or also viewed with those products. Finally, this new "universe of products"
-                    is filtered by those that, on average, were positively reviewed across all users.
-                </p>
-                <p>
-                    The products from this final set that have not already been reviewed by the user are outputted for
-                    final recommendation.
-                </p>
-                <img style="width: 80%" src="images/sketch1.png"/>
-
+            <div class='row'>
+              <div class="col-md-6">
+              <h3>Hybrid Model</h3>
+              <p style="text-align: justify;">The hybrid model outputs the intersection of the book lists generated by each model and orders them by
+                  their average score in the total dataset of Amazon kindle reviews, comprising almost 1,000,000 reviews.</p>
+              <p style="text-align: justify;">
+                  One evident drawback of this hybrid model is that the intersection output, shown in the graph below in
+                  yellow, is quite small. We can understand from this histogram that the recommendation sets outputted from
+                  the user-based collaborative filtering model are generally smaller than those outputted by the item-based
+                  filtering model, indicating that the intersection set is primarily limited in size by the user similarity
+                  matrix, which currently only supports 5,000 users due to computational intensity. Strategies to circumvent
+                  this drawback and further improve the quality of the final intersection set are mentioned in the conclusions
+                  section below.
+              </p>
+              <p style="text-align: justify;">
+                  Another important opportunity to recognize is that of integrating the two methods more conceptually, as
+                  opposed to simply taking the final intersection set. For example, for products in the universe of a user's
+                  positively reviewed products according to the metadata, items can be filtered by positive reviews from
+                  users most similar to the input user according to the similarity matrix, as opposed to the entire dataset.
+              </p>
+                  <!--<img style="width: 90%"src="images/Asset 14.png"/>-->
+              </div>
+              <div class="col-md-6">
+                  <img style="width: 100%"src="images/image11.png"/>
+              </div>
             </div>
-            </div>
-
-                <div class="col-md-6">
-            <h3>Hybrid Model</h3>
-            <p style="text-align: justify;">The hybrid model outputs the intersection of the book lists generated by each model and orders them by
-                their average score in the total dataset of Amazon kindle reviews, comprising almost 1,000,000 reviews.</p>
-            <p style="text-align: justify;">
-                One evident drawback of this hybrid model is that the intersection output, shown in the graph below in
-                yellow, is quite small. We can understand from this histogram that the recommendation sets outputted from
-                the user-based collaborative filtering model are generally smaller than those outputted by the item-based
-                filtering model, indicating that the intersection set is primarily limited in size by the user similarity
-                matrix, which currently only supports 5,000 users due to computational intensity. Strategies to circumvent
-                this drawback and further improve the quality of the final intersection set are mentioned in the conclusions
-                section below.
-            </p>
-            <p style="text-align: justify;">
-                Another important opportunity to recognize is that of integrating the two methods more conceptually, as
-                opposed to simply taking the final intersection set. For example, for products in the universe of a user's
-                positively reviewed products according to the metadata, items can be filtered by positive reviews from
-                users most similar to the input user according to the similarity matrix, as opposed to the entire dataset.
-            </p>
-                <!--<img style="width: 90%"src="images/Asset 14.png"/>-->
-                </div>
-            <div class="col-md-6">
-                <img style="width: 100%"src="images/image11.png"/>
-            </div>
-
 
         </div>
 
