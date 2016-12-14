@@ -74,7 +74,7 @@ body {
   box-sizing: border-box;
   text-align: center;
   color:black;
-  background: #fffcf4;
+  background: white;
   font-size: 16px;
   font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -90,14 +90,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 50px;
   font-weight: 700;
 }
 
 h2 {
   padding-top: 50px;
   padding-bottom: 20px;
-  font-size: 50px;
+  font-size: 36px;
   background: url('../images/bg_hr.png') repeat-x bottom;
 }
 
@@ -132,19 +132,19 @@ h2 {
 }
 
 h3 {
-  font-size: 40px;
-}
-
-h4 {
   font-size: 21px;
 }
 
+h4 {
+  font-size: 17px;
+}
+
 h5 {
-  font-size: 18px;
+  font-size: 15px;
 }
 
 h6 {
-  font-size: 16px;
+  font-size: 13px;
 }
 
 p {
@@ -601,4 +601,88 @@ circle {
 svg {
   width: 604px;
   height: 649px;
+}
+
+/*Everything relating to recommendations*/
+
+#genre-select, {
+  position: relative;
+  margin:auto;
+  width:100%;
+}
+
+#genres {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  height: 200px;
+}
+
+#genre-romance, #genre-thriller, #genre-uk {
+  margin: auto;
+  width: 100%;
+}
+
+#genre-romance .col-md-4, #genre-thriller .col-md-4, #genre-uk .col-md-4 {
+  margin: auto;
+  width: 100%;
+}
+
+
+#genre-romance img, #genre-thriller img, #genre-uk img {
+  position:absolute;
+  opacity:1;
+  height: 150px;
+}
+
+.img1 {
+  top: 15px;
+  left: 0px;
+}
+
+.img2 {
+  top: 25px;
+  left: 40px;
+}
+
+.img3 {
+  top: 35px;
+  left: 80px;
+}
+
+#genres img:hover {
+    border-bottom: 5px solid orange;
+    z-index: 1001;
+}
+
+#genre-romance:hover, #genre-thriller:hover, #genre-uk:hover {
+  border: 2px solid grey;
+}
+
+#genre-select .row {
+  margin: 20px;
+}
+
+#recommendations, #rec-books {
+  position: relative;
+  width: 100%;
+  margin:auto;
+}
+
+.rec-images {
+  position:absolute;
+  opacity:1;
+  text-align: center;
+}
+
+.rec-images img {
+  display:inline-block;
+  width:10%;
+  margin:auto;
+}
+
+#rec-profiles {
+  position: relative;
+  width:100%;
+  margin: auto;
 }

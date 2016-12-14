@@ -7,8 +7,8 @@
     <meta name="description" content="Kindle : ">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/jquery.fullPage.css">
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-      <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
 
 
       <title>Kindle</title>
@@ -28,8 +28,7 @@
             scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
             vizElement.parentNode.insertBefore(scriptElement, vizElement);*/
 
-            $('#fullpage').fullpage({
-            });
+            $('#fullpage').fullpage();
             $.fn.fullpage.setAutoScrolling(false)
 
         });
@@ -158,6 +157,24 @@
             </div>
         </div>
 
+        <div class="section" id="TopicData">
+            <h2>50 Shades of Amazon</h2>
+            <div class="col-md-6 column">
+
+                <h3>Overrepresentation of Romance</h3>
+
+                <p>Incredibly 51% of the Reviews were Romance Novels (while only 18% of the products were Romance Novels).</p>
+                <div style="text-align:center"><img style="width: 75%"src="images/TopicData/TopicData1.png"/></div> <br><br>
+                <div style="text-align:center"><img style="width: 75%"src="images/TopicData/TopicData2.png"/></div> <br><br>
+
+            </div>
+
+            <div class="col-md-6 column">
+                <h3>Impact on Recommendations</h3>
+
+            </div>
+        </div>
+
 
 
         <div class="section" id="recs">
@@ -167,69 +184,142 @@
             below in detail: user-based and item-based collaborative filtering. The intersection set of books outputted by
             both models form the final recommendations, and are ordered by their overall popularity in the dataset by
             average review.</p></center>
-            <div style="height: 600px">
-            <div class="col-md-6 column">
+            <!-- <div style="height: 600px"> -->
+            <div class='row'>
+              <div class="col-md-6 column">
 
-                <h3>Method 1: User-based Collaborative Filtering</h3>
-                <p>The user-based collaborative filtering model inputs a user ID and identifies that user’s position in a
-                    similarity matrix comprising 5000 randomly sampled users from the original universe of Amazon kindle reviewers.
-                    Matrix entries correspond to the scores users assigned to products, and for a given input user,
-                    the model calculates the user-row’s cosine similarity to all other rows in the matrix. Finally,
-                    with the given user’s most similar users on hand, the model recommends items liked by those users
-                    for final consideration.</p>
+                  <h3>Method 1: User-based Collaborative Filtering</h3>
+                  <p>The user-based collaborative filtering model inputs a user ID and identifies that user’s position in a
+                      similarity matrix comprising 5000 randomly sampled users from the original universe of Amazon kindle reviewers.
+                      Matrix entries correspond to the scores users assigned to products, and for a given input user,
+                      the model calculates the user-row’s cosine similarity to all other rows in the matrix. Finally,
+                      with the given user’s most similar users on hand, the model recommends items liked by those users
+                      for final consideration.</p>
 
-                <p>This is done by filtering products of the most similar users to those that were positively reviewed
-                by that user. The intersection set of liked products across all similar users is outputted to the input
-                user for recommendation. What is important to note is that the list is unordered, as the final recommendation
-                list is ordered after hybridization is completed.</p>
-                <img style="width: 80%"src="images/sketch2.png"/>
+                  <p>This is done by filtering products of the most similar users to those that were positively reviewed
+                  by that user. The intersection set of liked products across all similar users is outputted to the input
+                  user for recommendation. What is important to note is that the list is unordered, as the final recommendation
+                  list is ordered after hybridization is completed.</p>
+                  <img style="width: 80%"src="images/sketch2.png"/>
 
+              </div>
+              <div class="col-md-6 column">
+
+                  <h3>Method 2: Item-based Network Filtering</h3>
+                  <p>
+                      The item-based collaborative filtering model begins with the products that were most liked by an
+                      input user. These products are then cross-referenced with all products from the meta-dataset that
+                      were either also bought or also viewed with those products. Finally, this new "universe of products"
+                      is filtered by those that, on average, were positively reviewed across all users.
+                  </p>
+                  <p>
+                      The products from this final set that have not already been reviewed by the user are outputted for
+                      final recommendation.
+                  </p>
+                  <img style="width: 80%" src="images/sketch1.png"/>
+
+              </div>
             </div>
-            <div class="col-md-6 column">
+            <!-- </div> -->
 
-                <h3>Method 2: Item-based Network Filtering</h3>
-                <p>
-                    The item-based collaborative filtering model begins with the products that were most liked by an
-                    input user. These products are then cross-referenced with all products from the meta-dataset that
-                    were either also bought or also viewed with those products. Finally, this new "universe of products"
-                    is filtered by those that, on average, were positively reviewed across all users.
-                </p>
-                <p>
-                    The products from this final set that have not already been reviewed by the user are outputted for
-                    final recommendation.
-                </p>
-                <img style="width: 80%" src="images/sketch1.png"/>
-
+            <div class='row'>
+              <div class="col-md-6">
+              <h3>Hybrid Model</h3>
+              <p style="text-align: justify;">The hybrid model outputs the intersection of the book lists generated by each model and orders them by
+                  their average score in the total dataset of Amazon kindle reviews, comprising almost 1,000,000 reviews.</p>
+              <p style="text-align: justify;">
+                  One evident drawback of this hybrid model is that the intersection output, shown in the graph below in
+                  yellow, is quite small. We can understand from this histogram that the recommendation sets outputted from
+                  the user-based collaborative filtering model are generally smaller than those outputted by the item-based
+                  filtering model, indicating that the intersection set is primarily limited in size by the user similarity
+                  matrix, which currently only supports 5,000 users due to computational intensity. Strategies to circumvent
+                  this drawback and further improve the quality of the final intersection set are mentioned in the conclusions
+                  section below.
+              </p>
+              <p style="text-align: justify;">
+                  Another important opportunity to recognize is that of integrating the two methods more conceptually, as
+                  opposed to simply taking the final intersection set. For example, for products in the universe of a user's
+                  positively reviewed products according to the metadata, items can be filtered by positive reviews from
+                  users most similar to the input user according to the similarity matrix, as opposed to the entire dataset.
+              </p>
+                  <!--<img style="width: 90%"src="images/Asset 14.png"/>-->
+              </div>
+              <div class="col-md-6">
+                  <img style="width: 100%"src="images/image11.png"/>
+              </div>
             </div>
-            </div>
-
-                <div class="col-md-6">
-            <h3>Hybrid Model</h3>
-            <p style="text-align: justify;">The hybrid model outputs the intersection of the book lists generated by each model and orders them by
-                their average score in the total dataset of Amazon kindle reviews, comprising almost 1,000,000 reviews.</p>
-            <p style="text-align: justify;">
-                One evident drawback of this hybrid model is that the intersection output, shown in the graph below in
-                yellow, is quite small. We can understand from this histogram that the recommendation sets outputted from
-                the user-based collaborative filtering model are generally smaller than those outputted by the item-based
-                filtering model, indicating that the intersection set is primarily limited in size by the user similarity
-                matrix, which currently only supports 5,000 users due to computational intensity. Strategies to circumvent
-                this drawback and further improve the quality of the final intersection set are mentioned in the conclusions
-                section below.
-            </p>
-            <p style="text-align: justify;">
-                Another important opportunity to recognize is that of integrating the two methods more conceptually, as
-                opposed to simply taking the final intersection set. For example, for products in the universe of a user's
-                positively reviewed products according to the metadata, items can be filtered by positive reviews from
-                users most similar to the input user according to the similarity matrix, as opposed to the entire dataset.
-            </p>
-                <!--<img style="width: 90%"src="images/Asset 14.png"/>-->
-                </div>
-            <div class="col-md-6">
-                <img style="width: 100%"src="images/image11.png"/>
-            </div>
-
 
         </div>
+
+        <div class="section" id="rec-profiles">
+
+          <h3>Select a Reading Profile</h3>
+          <div id='genre-select'>
+            <div id='genres' class='row'>
+              <div class='col-md-4'>
+                <div id='genre-romance' class='genre'>
+                  <img class='img1' src="images/reviewer1/book1.jpg">
+                  <img class='img2' src="images/reviewer1/book2.jpg">
+                  <img class='img3' src="images/reviewer1/book3.jpg">
+                </div>
+                <label>Romance</label>
+              </div>
+              <div class='col-md-4'>
+                <div id='genre-thriller' class='genre'>
+                  <img class='img1' src="images/reviewer2/book1.jpg">
+                  <img class='img2' src="images/reviewer2/book2.jpg">
+                  <img class='img3' src="images/reviewer2/book3.jpg">
+                </div>
+                <label>Thriller</label>
+              </div>
+              <div class='col-md-4'>
+                <div id='genre-uk' class='genre'>
+                  <img class='img1' src="images/reviewer3/book1.jpg">
+                  <img class='img2' src="images/reviewer3/book2.jpg">
+                  <img class='img3' src="images/reviewer3/book3.jpg">
+                </div>
+                <label>UK</label>
+              </div>
+            </div>
+            <div class='row'>
+              <div id='similar-user'></div>
+            </div>
+            <div class='row'>
+              <div id='recommendations'>
+                <div id="rec-books"> 
+                  <div id="rec-images-0" class="rec-images">
+                      <h4>We recommend that you take a look at some of these books:</h4>
+                      <img src="images/reviewer1/book1.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer1/book2.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer1/book3.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer1/book4.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer1/book5.jpg" max-width="100" max-height="170">
+                  </div>
+                  <div id="rec-images-1" class="rec-images" >
+                      <h4>We recommend that you take a look at some of these books:</h4>
+                      <img src="images/reviewer2/book1.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer2/book2.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer2/book3.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer2/book4.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer2/book5.jpg" max-width="100" max-height="170">
+                  </div>
+                  <div id="rec-images-2" class="rec-images" >
+                      <h4>We recommend that you take a look at some of these books:</h4>
+                      <img src="images/reviewer3/book1.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer3/book2.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer3/book3.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer3/book4.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer3/book5.jpg" max-width="100" max-height="170">
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
         <div class="section" id="text-analysis">
             <h2 class="sectiontitle">Text Analysis</h2>
             <div class="col-md-6 column">
@@ -275,10 +365,10 @@
 
                 <h3>Methods Considered</h3>
                 <ul>
-                    <li><strong>Simple Average:</strong></li>
+                    <li><strong>Simple Average: </strong>Baseline models using a combination of Train Data's Total Population Avg., Item Avg., and User Avg. Rating. See <i>Appendix A</i> for more details.</li>
                     <li><strong>Ratings-based User-based collaborative filtering</strong></li>
                     <li><strong>Review-based User-based collaborative filtering</strong></li>
-                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix. See <i>Appendix A</i> for more details</li>
+                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix. See <i>Appendix B</i> for more details.</li>
                 </ul>
 
 
@@ -307,7 +397,6 @@
                   improvement from a model that wasn’t much better than Simple Averaging.  Considering the sparsity of
                   the dataset and the less-variability in ratings, difficulty in improving on RMSE is understandable.
               </p>
-              <img style="width: 70%" src="images/Asset 11.png"/>
 
               <p>While less quantifiably measurable, item recommendations proved more fruitful.
                   Relying on item metadata and user-based collaborative filtering to make recommendations,
@@ -354,42 +443,46 @@
                 </p>
             </div>
         </div>
-        <div class="section" id="references">
-            <h2>References</h2>
-            <div class="col-md-12 column">
-                    <p>
-                        [1] Image-based recommendations on styles and substitutes
-                        J. McAuley, C. Targett, J. Shi, A. van den Hengel
-                        SIGIR, 2015
-                    </p>
-                    <p>
-                        [2] Inferring networks of substitutable and complementary products
-                        J. McAuley, R. Pandey, J. Leskovec
-                        Knowledge Discovery and Data Mining, 2015
-                    </p>
-                    <p>
-                        [3] The BellKor Solution to the Netflix Grand Prize
-                        Y. Koren. 2008.
-                    </p>
+
+        <div class="section" id="appendixSA">
+            <h2>Appendix A: Simple Average</h2>
+            <div class="col-md-6 column">
+
+                <h3>Initial: Constant Prediction</h3>
+
+                <p>The initial baseline is to simply predict the average of all the train data. Average Kindle Rating is a high 4.35, and by using this simple method we already
+                    achieve a low RMSE of .89 (as illustrated below).</p>
+                <div style="text-align:center"><img style="width: 50%"src="images/SA/SA_1.png"/></div> <br><br>
+                <p>Note, for the Netflix challenge, teams were trying to achieve
+                an RMSE of .855.  This again illustrates the lack of variance within this data.</p>
+            </div>
+
+            <div class="col-md-6 column">
+                <h3>Weighted Average: Item and User Avg. Rating</h3>
+                <p>An improved baseline is to use a weighted sum of Item and User Average Rating.
+                The below graph shows that the User Avg. Rating is more valuable than the Item Avg. Rating
+                as the optimal combination of the two ratings is 20% Item Avg. and 80% User Avg.  This method already achieved an RMSE of .75. </p>
+                <div style="text-align:center"><img style="width: 50%"src="images/SA/SA_2.png"/> </div><br><br>
+                <p>Logically, given low variance of data and sparsity of data (we in fact do not have much data on each user/item),
+                surpassing this already low baseline is quite difficult.</p>
 
 
             </div>
-
         </div>
 
         <div class="section" id="appendixMF">
-            <h2>Appendix A: Matrix Factorization</h2>
+            <h2>Appendix B: Matrix Factorization</h2>
             <div class="col-md-4 column">
 
                 <h3>Overview</h3>
                 <p>
                 Our goal is to turn the user-item matrix <strong>R</strong> as per below:<br>
-                    <img style="width: 350px"src="images/MF/MF_1.png"/> <br>
+                <div style="text-align:center"><img style="width: 350px"src="images/MF/MF_1.png"/> </div><br>
                 Into a completely filled predictions matrix <strong>R&#770 </strong> as per below: <br>
                 <img style="width: 350px"src="images/MF/MF_2.png"/><br>
                     By finding feature matrices <strong>P</strong> and <strong>Q</strong> to lead to:
                     <strong>R&#8776P*Q<sup>T</sup>=R&#770</strong><br>
-                    <img style="width: 350px"src="images/MF/MF_3.png"/><br>
+                <div style="text-align:center"> <img style="width: 350px"src="images/MF/MF_3.png"/></div><br>
 
                 </p>
 
@@ -399,16 +492,60 @@
             </div>
 
 
-            <div class="col-md-4">
-                <h3>Application</h3>
-                <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
-                <img style="width: 400px"src="images/MF/MF_1.png"/>
-                <ul>
-                    <li><strong>Implementation by Hand: </strong> Breaking a single matrix into two features matrices </li>
-                    <li><strong>GraphLab Library: </strong></li>
-                </ul>
+            <div class="col-md-4 column">
+                <h3>Stochastic Gradient Descent</h3>
+                <p>But how do we find <strong>P</strong> and <strong>Q</strong>?  We do this through Stochastic
+                Gradient Descent (SGD).  We initialize <strong>P</strong> and <strong>Q</strong> to essentially randomized values.
+                Once initialized, we have a prediction matrix <strong>R&#770 </strong> (equation i).  With predictions
+                we can determine error values for every train data user-item pair (equation ii).  We then amend P and Q in the direction to reduce error for every train user-item pair (equations iii and iv).</p>
+                <img style="width: 100%"src="images/MF/MF_6.png"/>
+                <p>This process requires fixing the below parameters.</p>
+                <img style="width: 100%"src="images/MF/MF_7.png"/>
+                <br>
+                <br>
+                <p>We used a grid search to find optimal values for these parameters.</p>
 
             </div>
+            <div class="col-md-4 column">
+                <h3>Implementation</h3>
+                <p>The below illustrates the improving RMSE from SGD.</p>
+                 <img style="width: 80%"src="images/MF/MF_5.png"/>
+                <ul>
+                    <li><strong>Non-Library Implementation: </strong> Test RMSE of .80 </li>
+                    <li><strong>GraphLab Library: </strong> Test RMSE of .76</li>
+                    <li><strong>Combine SimpAvg and MF: </strong> Test RMSE of .74 (below graph shows Matrix Factorization weight of .3, SimpAvg weight of .7 was optimal)</li>
+                </ul>
+                <div style="text-align:center">
+                <img style="width: 50%"src="images/MF/MF_8.png"/>
+                </div>
+                <br>
+
+                <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
+
+            </div>
+        </div>
+
+        <div class="section" id="references">
+            <h2>References</h2>
+            <div class="col-md-12 column">
+                <p>
+                    [1] Image-based recommendations on styles and substitutes
+                    J. McAuley, C. Targett, J. Shi, A. van den Hengel
+                    SIGIR, 2015
+                </p>
+                <p>
+                    [2] Inferring networks of substitutable and complementary products
+                    J. McAuley, R. Pandey, J. Leskovec
+                    Knowledge Discovery and Data Mining, 2015
+                </p>
+                <p>
+                    [3] The BellKor Solution to the Netflix Grand Prize
+                    Y. Koren. 2008.
+                </p>
+
+
+            </div>
+
         </div>
         
     </div>
@@ -416,7 +553,9 @@
 
 
 <script src="javascripts/bootstrap.min.js"></script>
-<!--<script src="javascripts/script.js"></script>-->
 <script src="javascripts/main.js"></script>
+<script src="javascripts/jquery.fullPage.min.js"></script>
+
+
 
 </html>
