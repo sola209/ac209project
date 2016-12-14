@@ -399,15 +399,35 @@
             </div>
 
 
-            <div class="col-md-4">
-                <h3>Application</h3>
-                <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
-                <img style="width: 400px"src="images/MF/MF_1.png"/>
+            <div class="col-md-4 column">
+                <h3>Stochastic Gradient Descent</h3>
+                <p>But how do we find <strong>P</strong> and <strong>Q</strong>?  We do this through Stochastic
+                Gradient Descent (SGD).  We initialize <strong>P</strong> and <strong>Q</strong> to essentially randomized values.
+                Once initialized, we have a prediction matrix <strong>R&#770 </strong> (equation i).  With predictions
+                we can determine error values for every train data user-item pair (equation ii).  We then amend P and Q in the direction to reduce error for every train user-item pair (equations iii and iv).</p>
+                <img style="width: 100%"src="images/MF/MF_6.png"/>
+                <p>This process requires fixing the below parameters.</p>
+                <img style="width: 100%"src="images/MF/MF_7.png"/>
+                <br>
+                <br>
+                <p>We used a grid search to find optimal values for these parameters.</p>
+
+            </div>
+            <div class="col-md-4 column">
+                <h3>Implementation</h3>
+                <p>The below illustrates the improving RMSE from SGD.</p>
+                 <img style="width: 80%"src="images/MF/MF_5.png"/>
                 <ul>
-                    <li><strong>Implementation by Hand: </strong> Breaking a single matrix into two features matrices </li>
-                    <li><strong>GraphLab Library: </strong></li>
-                    <li><strong>Test: </strong></li>
+                    <li><strong>Non-Library Implementation: </strong> Test RMSE of .80 </li>
+                    <li><strong>GraphLab Library: </strong> Test RMSE of .76</li>
+                    <li><strong>Combine SimpAvg and MF: </strong> Test RMSE of .74</li>
                 </ul>
+                <div style="text-align:center">
+                <img style="width: 50%"src="images/MF/MF_8.png"/>
+                </div>
+                <br>
+
+                <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
 
             </div>
         </div>
