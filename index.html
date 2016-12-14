@@ -7,8 +7,8 @@
     <meta name="description" content="Kindle : ">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/jquery.fullPage.css">
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-      <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
 
 
       <title>Kindle</title>
@@ -28,8 +28,7 @@
             scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
             vizElement.parentNode.insertBefore(scriptElement, vizElement);*/
 
-            $('#fullpage').fullpage({
-            });
+            $('#fullpage').fullpage();
             $.fn.fullpage.setAutoScrolling(false)
 
         });
@@ -248,6 +247,76 @@
 
 
         </div>
+
+        <div class="section" id="rec-profiles">
+
+          <h3>Select a Reading Profile</h3>
+          <div id='genre-select'>
+            <div id='genres' class='row'>
+              <div class='col-md-4'>
+                <div id='genre-romance' class='genre'>
+                  <img class='img1' src="images/reviewer1/book1.jpg">
+                  <img class='img2' src="images/reviewer1/book2.jpg">
+                  <img class='img3' src="images/reviewer1/book3.jpg">
+                </div>
+                <label>Romance</label>
+              </div>
+              <div class='col-md-4'>
+                <div id='genre-thriller' class='genre'>
+                  <img class='img1' src="images/reviewer2/book1.jpg">
+                  <img class='img2' src="images/reviewer2/book2.jpg">
+                  <img class='img3' src="images/reviewer2/book3.jpg">
+                </div>
+                <label>Thriller</label>
+              </div>
+              <div class='col-md-4'>
+                <div id='genre-uk' class='genre'>
+                  <img class='img1' src="images/reviewer3/book1.jpg">
+                  <img class='img2' src="images/reviewer3/book2.jpg">
+                  <img class='img3' src="images/reviewer3/book3.jpg">
+                </div>
+                <label>UK</label>
+              </div>
+            </div>
+            <div class='row'>
+              <div id='similar-user'></div>
+            </div>
+            <div class='row'>
+              <div id='recommendations'>
+                <div id="rec-books"> 
+                  <div id="rec-images-0" class="rec-images">
+                      <h4>We recommend that you take a look at some of these books:</h4>
+                      <img src="images/reviewer1/book1.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer1/book2.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer1/book3.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer1/book4.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer1/book5.jpg" max-width="100" max-height="170">
+                  </div>
+                  <div id="rec-images-1" class="rec-images" >
+                      <h4>We recommend that you take a look at some of these books:</h4>
+                      <img src="images/reviewer2/book1.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer2/book2.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer2/book3.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer2/book4.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer2/book5.jpg" max-width="100" max-height="170">
+                  </div>
+                  <div id="rec-images-2" class="rec-images" >
+                      <h4>We recommend that you take a look at some of these books:</h4>
+                      <img src="images/reviewer3/book1.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer3/book2.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer3/book3.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer3/book4.jpg" max-width="100" max-height="170">
+                      <img src="images/reviewer3/book5.jpg" max-width="100" max-height="170">
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
         <div class="section" id="text-analysis">
             <h2 class="sectiontitle">Text Analysis</h2>
             <div class="col-md-6 column">
@@ -481,7 +550,9 @@
 
 
 <script src="javascripts/bootstrap.min.js"></script>
-<!--<script src="javascripts/script.js"></script>-->
 <script src="javascripts/main.js"></script>
+<script src="javascripts/jquery.fullPage.min.js"></script>
+
+
 
 </html>
