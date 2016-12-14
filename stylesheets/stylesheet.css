@@ -500,7 +500,7 @@ Small Device Styles
   height: 40px;
   z-index: 70;
   width: 100%;
-  padding-bottom:50;
+  padding-bottom: 50px;
 }
 
 
@@ -605,7 +605,7 @@ svg {
 
 /*Everything relating to recommendations*/
 
-#genre-select, {
+#genre-select {
   position: relative;
   margin:auto;
   width:100%;
