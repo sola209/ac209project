@@ -426,17 +426,32 @@
             </div>
         </div>
 
-        <div class="section" id="text-analysis">
+        <div class="section" id="user-based">
             <h2 class="sectiontitle">Predicting Ratings Methods: User-based Collaborative Filtering</h2>
             <div class="col-md-6 column">
                 <h3>Traditional User-based Collaborative Filtering</h3>
+                <p>In addition to using user-based collaborative filtering for generating recommendations, it can also
+                    be used to predict a user's rating for any book. The basic idea of this approach is that for a given
+                    user, the model will find similar users and use the ratings of the similar users to predict the rating
+                    of the first user. </p>
+                <img style="width: 60%"src="images/collaborative_filtering.png"/>
+                <p>Image Source: <a href="http://www.gravityrd.com/technology">Collaborative Filtering</a></p>
+
+                <p>For this model, a dataset of approximately 1000 frequent reviewers was used. For each of these users,
+                    a similarity matrix was generated to represent the similarity between each pair of user. Similarity was calculated by taking the cosine similarity
+                    of each user's vector of ratings for all books. Finally, in order to calculate the predicted rating for a given user and book, the average
+                    rating for that user across all books was added to a normalized average of all other users' ratings
+                    for the given book, weighted by the similarity of the user. In this way, users that are most
+                    similar have the most significant influence on the prediction. </p>
+
 
 
 
             </div>
             <div class="col-md-6 column">
                 <h3>User-based Collaborative Filtering with Text Analysis</h3>
-                The text from each user's set of reviews was used as one method for determining similarity between users.
+                This approach is identical to user-based collaborative filtering, except that rather than calculating
+                user to user similarity from rating history, it was calculated from review text.
                 The following process was used to complete the text analysis:
                 <ol>
                     <li>The dataset was grouped by user, and for each user, text from all reviews was combined into one block of text.</li>
@@ -448,10 +463,14 @@
                     <li>The cosine similarity between each pair of users was calculated using their vectors of TF-IDF scores.</li>
                 </ol>
                 <h3>Methods for Determining Text Attributes</h3>
-                <p><strong>Count Vectorizer:</strong></p>
-                <p><strong>Term Frequency (TF)</strong></p>
-                <p><strong>Inverse Document Frequency</strong></p>
-                <p><strong>TF-IDF</strong></p>
+                <p><strong>Count Vectorizer:</strong> Converts text from each review into a matrix of word counts</p>
+                <p><strong>Term Frequency (TF):</strong>The frequency of a word in a document. Usually this log form is used:
+                </p>
+                <p><strong>Inverse Document Frequency:</strong>The inverse of the document frequency -- that is, the ratio of total documents/items to the number of items where some attribute is present. Usually the log of this ratio is used.
+                </p>
+                <p><strong>TF-IDF: </strong>The term frequency multipled by the inverse document frequency. Overall this
+                represents how often a word was used by user, and how unique that word is - indicating how significant
+                    it is that a given word appeared in a user's set of reviews.</p>
 
             </div>
         </div>

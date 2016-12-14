@@ -555,7 +555,7 @@ ol {
   margin-right:150px;
 }*/
 .tableauPlaceholder {
-  width: 70%;
+  width: 75%;
   height: auto;
   margin: 0 auto;
   padding: 10px;
@@ -563,6 +563,12 @@ ol {
 
 }
 #conclusion img {
+  display:block;
+  margin:auto;
+  padding-bottom:15px;
+  padding-top:15px;:
+}
+#user-based img {
   display:block;
   margin:auto;
   padding-bottom:15px;
