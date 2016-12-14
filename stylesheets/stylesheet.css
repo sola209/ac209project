@@ -111,7 +111,8 @@ h2 {
 
 .carouselbox {
 
-  width: 50%;
+  /*width: 50%;*/
+  height:70%;
   border: 1px solid black;
   background-color: #fbf9f1;
   margin: 4px 4px 4px 4px;
@@ -500,7 +501,7 @@ Small Device Styles
   height: 40px;
   z-index: 70;
   width: 100%;
-  padding-bottom:50;
+  padding-bottom: 50px;
 }
 
 
@@ -555,7 +556,7 @@ ol {
   margin-right:150px;
 }*/
 .tableauPlaceholder {
-  width: 70%;
+  width: 75%;
   height: auto;
   margin: 0 auto;
   padding: 10px;
@@ -567,6 +568,22 @@ ol {
   margin:auto;
   padding-bottom:15px;
   padding-top:15px;:
+}
+#user-based img {
+  display:block;
+  margin:auto;
+  padding-bottom:15px;
+  padding-top:15px;:
+}
+
+#ratings img {
+  display:block;
+  margin-left:100px;
+  padding-bottom:15px;
+  padding-top:15px;:
+}
+#ratings h3 {
+  /*text-align:left;*/
 }
 .section {
   padding-left: 50px;
@@ -609,7 +626,7 @@ svg {
   text-align: left;
 }
 
-#genre-select, {
+#genre-select {
   position: relative;
   margin:auto;
   width:100%;
@@ -689,4 +706,8 @@ svg {
   position: relative;
   width:100%;
   margin: auto;
+}
+
+.section {
+  border-top: solid 4px #9c9c9c;
 }
