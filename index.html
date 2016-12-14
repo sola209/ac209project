@@ -8,16 +8,33 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/jquery.fullPage.css">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+      <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
 
-    <title>Kindle</title>
 
+      <title>Kindle</title>
     <script src="javascripts/jquery.min.js"></script>
     <script src="javascripts/jquery.fullPage.min.js"></script>
+      <script src="javascripts/d3.js"></script>
+      <script src="javascripts/d3.min.js"></script>
 
-    <script type="text/javascript">
+
+      <script type="text/javascript">
         $(document).ready(function() {
-            $('#fullpage').fullpage();
+            /*var divElement = document.getElementById('viz1481423599363');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = '1004px';
+            vizElement.style.height = '669px';
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);*/
+
+            $('#fullpage').fullpage({
+            });
+            $.fn.fullpage.setAutoScrolling(false)
+
         });
+
+
     </script>
 
   </head>
@@ -46,29 +63,361 @@
         <!-- HEADER -->
 
         <div class="section" id="home">
-              <h1>Rekindling Your Inner Reader: A Recommendation System for the Amazon Kindle Store</h1>
-              <img src="images/Amazon-yellow-arrow.png">
+            <div style="width: 50%; float: right" id="right">
+                <br>
+                <br>
+              <h1>Rekindling Your <br> Inner Reader: </h1>
+                <h3 style="margin-bottom: 80px">A Recommendation System for the Amazon Kindle Store</h3>
+            <a id = 'begin' href="#overview">BEGIN</a>
+              <!--<img src="images/Amazon-yellow-arrow.png">-->
+                <br>
+                <br>
+                <br>
+                <h3>Team SOLA</h3>
+                <h4>Sarah Mohamed, Omar Abboud, Laura Ware, & Anthony Soroka</h4>
+            </div>
+            <div style="width: 50%; float: left; height: 649px" id="left"><div id="force" style="width: 100%; height: 100%"></div></div>
+
+
         </div>
         <div class="section" id="overview">
-          Overview
-        </div>
-        <div class="section" id="recs">
-          Recommendations
-        </div>
-        <div class="section" id="ratings">
-          Rating Prediction
-        </div>
-        <div class="section" id="conclusion">
-          Conclusion
+          <h2 class="sectiontitle">Overview & Motivation</h2>
+
+            <div class="col-md-6 column">
+
+                <h3>Introduction</h3>
+                <p>
+                    The Netflix Challenge, which completed in 2009, sparked significant research interest in
+                    recommendation systems based on user ratings and reviews. Rather than movies, we present and
+                    evaluate methods for recommending another favorite pasttime: books.  Illustrating the significance
+                    of this research, the Amazon Kindle market alone rivals that of Netflix by size ($5bn vs. $6bn).
+                    In our study, we recommend Kindle books to users reliably and efficiently, through analyzing
+                    Amazon Kindle Store review data to understand what types of users correlate strongest with
+                    groups of products. <br>
+
+                </p>
+                <p>
+                    The Netflix Challenge also provides useful context and motivation for this project, as the Kindle data
+                    is both more sparse and less varied. As the following pie graphs demonstrate, ratings are disproportionately
+                    skewed towards the 4 and 5-star ratings categories, re-emphasizing the need for product and user
+                    behaviour-based approaches to recommendation.
+                </p>
+                <center><img src="images/Asset11.png" style="width: 75%"/></center>
+
+            </div>
+            <div class="col-md-6 column">
+
+                <h3>Datasets</h3>
+                <p> The following datasets were consulted in the preparation of this report: </p>
+                <ol>
+                    <li>
+                        Amazon Kindle Store <strong>Ratings and Reviews:</strong> Includes ~1 million records of ratings, with
+                        complete review text, timestamp, product ID, rating out of 5 and user ID for each review.
+                        The dataset is automatically filtered to only include users that have reviewed at least five
+                        products, and products that have at been reviewed at least five times each.
+                    </li>
+                    <li>
+                        Amazon Kindle Store <strong>Product Metadata:</strong> Includes ~500,000 records of product, with
+                        the name, product ID, description, price, category, and items that were also bought and also viewed
+                        for each recorded product.
+                    </li>
+
+                </ol>
+                <h3>Project Features</h3>
+                <p>
+                    Our project proposes the following two categories of analysis pertaining to the goal above:
+                </p>
+                <ul>
+                    <li>Recommend a list of books based on a user’s rating and review history</li>
+                    <li>Predict a user’s 5-star rating for any book</li>
+
+                </ul>
+
+
+            </div>
+
+
         </div>
 
+        <div class="section tableauarea" id="datasets1">
+            <h2 class="sectiontitle">Data Exploration and Visualization</h2>
+            <center><p class = 'carouselbox'>This carousel cycles through primary observations learned through the data exploration phase of the
+            project; namely, understanding the distribution of review frequencies across users, quantifying the
+            relationship between ratings and review helpfulness, and other summary metrics.</p></center>
+            <div class="slide" id="slide2">
+                <div class='tableauPlaceholder' id='viz1481611567442' style='position: relative'><noscript><a href='#'><img alt='Reviews are mostly 5-star, and from 2013-2014 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481611567442');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='669px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
+            <div class="slide" id="slide1">
+                <div class='tableauPlaceholder' id='viz1481611461259' style='position: relative'><noscript><a href='#'><img alt='This dataset has ~ 1 million reviews, ~60,000 products, and ~70,000 reviewers ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481611461259');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='669px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
+            <div class="slide" id="slide3">
+                <div class='tableauPlaceholder' id='viz1481611618496' style='position: relative'><noscript><a href='#'><img alt='Most reviewers have written 5-10 reviews ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481611618496');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='669px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
+            <div class="slide" id="slide4">
+                <div class='tableauPlaceholder' id='viz1481611651941' style='position: relative'><noscript><a href='#'><img alt='Reviews that have a higher rating are rated as more helpful ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='RatingsandReviews-Summary&#47;Viz4' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;RatingsandReviews-Summary&#47;Viz4&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='no' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1481611651941');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1004px';vizElement.style.height='669px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
+        </div>
+
+
+
+        <div class="section" id="recs">
+          <h2 class="sectiontitle">Recommending Previously Unseen Books</h2>
+            <center><p class='collabbox'>This section describes methods pertaining to previously unseen book recommendations
+            given an input user. This model is constructed using a hybrid model of two recommendation modules described
+            below in detail: user-based and item-based collaborative filtering. The intersection set of books outputted by
+            both models form the final recommendations, and are ordered by their overall popularity in the dataset by
+            average review.</p></center>
+            <div style="height: 600px">
+            <div class="col-md-6 column">
+
+                <h3>Method 1: User-based Collaborative Filtering</h3>
+                <p>The user-based collaborative filtering model inputs a user ID and identifies that user’s position in a
+                    similarity matrix comprising 5000 randomly sampled users from the original universe of Amazon kindle reviewers.
+                    Matrix entries correspond to the scores users assigned to products, and for a given input user,
+                    the model calculates the user-row’s cosine similarity to all other rows in the matrix. Finally,
+                    with the given user’s most similar users on hand, the model recommends items liked by those users
+                    for final consideration.</p>
+
+                <p>This is done by filtering products of the most similar users to those that were positively reviewed
+                by that user. The intersection set of liked products across all similar users is outputted to the input
+                user for recommendation. What is important to note is that the list is unordered, as the final recommendation
+                list is ordered after hybridization is completed.</p>
+                <img style="width: 80%"src="images/sketch2.png"/>
+
+            </div>
+            <div class="col-md-6 column">
+
+                <h3>Method 2: Item-based Network Filtering</h3>
+                <p>
+                    The item-based collaborative filtering model begins with the products that were most liked by an
+                    input user. These products are then cross-referenced with all products from the meta-dataset that
+                    were either also bought or also viewed with those products. Finally, this new "universe of products"
+                    is filtered by those that, on average, were positively reviewed across all users.
+                </p>
+                <p>
+                    The products from this final set that have not already been reviewed by the user are outputted for
+                    final recommendation.
+                </p>
+                <img style="width: 80%" src="images/sketch1.png"/>
+
+            </div>
+            </div>
+
+                <div class="col-md-6">
+            <h3>Hybrid Model</h3>
+            <p style="text-align: justify;">The hybrid model outputs the intersection of the book lists generated by each model and orders them by
+                their average score in the total dataset of Amazon kindle reviews, comprising almost 1,000,000 reviews.</p>
+            <p style="text-align: justify;">
+                One evident drawback of this hybrid model is that the intersection output, shown in the graph below in
+                yellow, is quite small. We can understand from this histogram that the recommendation sets outputted from
+                the user-based collaborative filtering model are generally smaller than those outputted by the item-based
+                filtering model, indicating that the intersection set is primarily limited in size by the user similarity
+                matrix, which currently only supports 5,000 users due to computational intensity. Strategies to circumvent
+                this drawback and further improve the quality of the final intersection set are mentioned in the conclusions
+                section below.
+            </p>
+            <p style="text-align: justify;">
+                Another important opportunity to recognize is that of integrating the two methods more conceptually, as
+                opposed to simply taking the final intersection set. For example, for products in the universe of a user's
+                positively reviewed products according to the metadata, items can be filtered by positive reviews from
+                users most similar to the input user according to the similarity matrix, as opposed to the entire dataset.
+            </p>
+                <!--<img style="width: 90%"src="images/Asset 14.png"/>-->
+                </div>
+            <div class="col-md-6">
+                <img style="width: 100%"src="images/image11.png"/>
+            </div>
+
+
+        </div>
+        <div class="section" id="text-analysis">
+            <h2 class="sectiontitle">Text Analysis</h2>
+            <div class="col-md-6 column">
+
+                <h3>Methods for Determining Text Attributes</h3>
+                <p><strong>Count Vectorizer:</strong></p>
+                <p><strong>Term Frequency (TF)</strong></p>
+                <p><strong>Inverse Document Frequency</strong></p>
+                <p><strong>TF-IDF</strong></p>
+
+
+
+
+            </div>
+            <div class="col-md-6 column">
+
+            <h3>Implementation</h3>
+            The text from each user's set of reviews was used as one method for determining similarity between users.
+            The following process was used to complete the text analysis:
+            <ol>
+                <li>The dataset was grouped by user, and for each user, text from all reviews was combined into one block of text.</li>
+                <li>A count vectorizer was used to get counts of all words in each block of text.
+                    A list of standard English stop words was used to remove very common words and prepositions from the text.</li>
+                <li>Text was cleaned of all html entities.</li>
+                <li>The result of the above is a "utility matrix" of users as rows and word counts as columns.</li>
+                <li>Next, the TF-IDF score was calculated for each word, such that the word counts in the utility matrix were updated with these scores.</li>
+                <li>The cosine similarity between each pair of users was calculated using their vectors of TF-IDF scores.</li>
+            </ol>
+
+            </div>
+        </div>
+        <div class="section" id="user-based">
+            <h2 class="sectiontitle">User Based Collaborative Filtering</h2>
+            <div class="col-md-6 column">
+            </div>
+            <div class="col-md-6 column">
+
+            </div>
+        </div>
+        <div class="section" id="ratings">
+          <h2 class="sectiontitle">Ratings Predictions</h2>
+            <div class="col-md-6 column">
+
+                <h3>Methods Considered</h3>
+                <ul>
+                    <li><strong>Simple Average:</strong></li>
+                    <li><strong>Ratings-based User-based collaborative filtering</strong></li>
+                    <li><strong>Review-based User-based collaborative filtering</strong></li>
+                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix. See <i>Appendix A</i> for more details</li>
+                </ul>
+
+
+
+
+            </div>
+
+
+            <div class="col-md-6">
+            <h3>Results</h3>
+                <img style="width: 75%"src="images/Asset 9.png"/>
+
+
+            </div>
+        </div>
+
+
+        <div class="section" id="conclusion">
+            <h2 class="sectiontitle">Conclusions & Future Work</h2>
+          <div class="col-md-6 column">
+              <h3>Conclusions</h3>
+              <p>Improving on Simple Averaging for Kindle Ratings Predictions proved difficult.
+                  After investigating a range of models such as collaborative filtering and matrix factorization, we
+                  lowered RMSE by 3% from the Simple Averaging baseline.  However the Netflix Challenge helps us
+                  frame the significance of this improvement: Netflix waited 3 years and paid $1mm for a 10%
+                  improvement from a model that wasn’t much better than Simple Averaging.  Considering the sparsity of
+                  the dataset and the less-variability in ratings, difficulty in improving on RMSE is understandable.
+              </p>
+              <img style="width: 70%" src="images/Asset 11.png"/>
+
+              <p>While less quantifiably measurable, item recommendations proved more fruitful.
+                  Relying on item metadata and user-based collaborative filtering to make recommendations,
+                  we found considerable overlap among recommendations found using either strategy. While the user-based
+                  recommendation model was able to leverage common user opinions based on product ratings, the item-based
+                  model examined a the broader universe of available products. The intersection of these two strategies
+                  balances similarity based on reviews as well as the user’s broader genre preferences.</p>
+
+              <p>
+                  To evaluate the efficacy of the two strategies, we must consider the trade-off between the model’s
+                  ability to recommend novel items, and our ability to evaluate model performance. While the accuracy
+                  of the Simple Averaging model is easily quantifiable, the collaborative filtering methods are not.
+              </p>
+          </div>
+            <div class="col-md-6 column">
+                <h3>Future Work</h3>
+                <p><strong>Computational efficiency:</strong> The Amazon Kindle dataset encodes information for
+                    ~62,000 users and ~68,000 products. Due to memory and processing constraints, all of our present
+                    models sample a small subset of this information. In order to increase the volume of information
+                    available to the model, we will need to encode this data using a sparse matrix representation and
+                    use matrix operations in our predictive calculations.
+                </p>
+
+                <p><strong>Integrating Text Analysis and User-based Collaborative Filtering:</strong>
+                    We are currently calculating user similarity matrices separately for the user-based collaborative
+                    filtering model and for the text analysis model. We’d like to create a model that combines these
+                    two approaches, and uses the similarity matrices from both models. For example, we could calculate
+                    the N most similar users from the text model, and the N most similar users from the collaborative
+                    filtering approach, and take the union of those two sets as the final similarity matrix. We can then
+                    test to see if this mixed model improves the accuracy of our rating predictions.
+                </p>
+
+                <p><strong>Machine Learning Approach:</strong> We haven’t yet tried implementing a machine
+                    learning based approach. The Stanford article on recommender systems
+                    (http://infolab.stanford.edu/~ullman/mmds/ch9.pdf ) suggested an approach involving
+                    creating a decision tree for each user, in which the predictors are attributes of
+                    the item as shown in the below diagram. In our case, we could use book attributes
+                    from the metadata dataset as the predictors.
+                </p>
+
+                <p> <strong>Matrix Factorization:</strong> Given the size of our dataset, speed is a
+                    consideration for our predictive models.  Matrix Factorization is a relatively quick model
+                    that works well with this sort of recommendation problem. This would be a good initial enhancement from our baseline models.
+                </p>
+            </div>
+        </div>
+        <div class="section" id="references">
+            <h2>References</h2>
+            <div class="col-md-12 column">
+                    <p>
+                        [1] Image-based recommendations on styles and substitutes
+                        J. McAuley, C. Targett, J. Shi, A. van den Hengel
+                        SIGIR, 2015
+                    </p>
+                    <p>
+                        [2] Inferring networks of substitutable and complementary products
+                        J. McAuley, R. Pandey, J. Leskovec
+                        Knowledge Discovery and Data Mining, 2015
+                    </p>
+                    <p>
+                        [3] The BellKor Solution to the Netflix Grand Prize
+                        Y. Koren. 2008.
+                    </p>
+
+
+            </div>
+
+        </div>
+
+        <div class="section" id="appendixMF">
+            <h2>Appendix A: Matrix Factorization</h2>
+            <div class="col-md-4 column">
+
+                <h3>Overview</h3>
+                <p>
+                Our goal is to turn the user-item matrix <strong>R</strong> as per below:<br>
+                    <img style="width: 350px"src="images/MF/MF_1.png"/> <br>
+                Into a completely filled predictions matrix <strong>R&#770 </strong> as per below: <br>
+                <img style="width: 350px"src="images/MF/MF_2.png"/><br>
+                    By finding feature matrices <strong>P</strong> and <strong>Q</strong> to lead to:
+                    <strong>R&#8776P*Q<sup>T</sup>=R&#770</strong><br>
+                    <img style="width: 350px"src="images/MF/MF_3.png"/><br>
+
+                </p>
+
+
+
+
+            </div>
+
+
+            <div class="col-md-4">
+                <h3>Application</h3>
+                <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
+                <img style="width: 400px"src="images/MF/MF_1.png"/>
+                <ul>
+                    <li><strong>Implementation by Hand: </strong> Breaking a single matrix into two features matrices </li>
+                    <li><strong>GraphLab Library: </strong></li>
+                    <li><strong>Test: </strong></li>
+                </ul>
+
+            </div>
+        </div>
         
     </div>
   </body>
 
 
 <script src="javascripts/bootstrap.min.js"></script>
-<script src="javascripts/script.js"></script>
+<!--<script src="javascripts/script.js"></script>-->
 <script src="javascripts/main.js"></script>
 
 </html>
