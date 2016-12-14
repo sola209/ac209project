@@ -658,9 +658,9 @@ svg {
   border: 2px solid grey;
 }
 
-/*#genre-select .row {
+#genre-select .row {
   margin: 20px;
-}*/
+}
 
 .rec-images {
   position:absolute;
