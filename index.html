@@ -275,10 +275,10 @@
 
                 <h3>Methods Considered</h3>
                 <ul>
-                    <li><strong>Simple Average:</strong></li>
+                    <li><strong>Simple Average: </strong>Baseline models using a combination of Train Data's Total Population Avg., Item Avg., and User Avg. Rating. See <i>Appendix A</i> for more details.</li>
                     <li><strong>Ratings-based User-based collaborative filtering</strong></li>
                     <li><strong>Review-based User-based collaborative filtering</strong></li>
-                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix. See <i>Appendix A</i> for more details</li>
+                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix. See <i>Appendix B</i> for more details.</li>
                 </ul>
 
 
@@ -307,7 +307,6 @@
                   improvement from a model that wasn’t much better than Simple Averaging.  Considering the sparsity of
                   the dataset and the less-variability in ratings, difficulty in improving on RMSE is understandable.
               </p>
-              <img style="width: 70%" src="images/Asset 11.png"/>
 
               <p>While less quantifiably measurable, item recommendations proved more fruitful.
                   Relying on item metadata and user-based collaborative filtering to make recommendations,
@@ -354,31 +353,28 @@
                 </p>
             </div>
         </div>
-        <div class="section" id="references">
-            <h2>References</h2>
-            <div class="col-md-12 column">
-                    <p>
-                        [1] Image-based recommendations on styles and substitutes
-                        J. McAuley, C. Targett, J. Shi, A. van den Hengel
-                        SIGIR, 2015
-                    </p>
-                    <p>
-                        [2] Inferring networks of substitutable and complementary products
-                        J. McAuley, R. Pandey, J. Leskovec
-                        Knowledge Discovery and Data Mining, 2015
-                    </p>
-                    <p>
-                        [3] The BellKor Solution to the Netflix Grand Prize
-                        Y. Koren. 2008.
-                    </p>
 
+        <div class="section" id="appendixSA">
+            <h2>Appendix A: Simple Average</h2>
+            <div class="col-md-4 column">
+
+                <h3>Overview</h3>
 
             </div>
 
+            <div class="col-md-4 column">
+                <h3>Stochastic Gradient Descent</h3>
+
+
+            </div>
+            <div class="col-md-4 column">
+                <h3>Implementation</h3>
+
+            </div>
         </div>
 
         <div class="section" id="appendixMF">
-            <h2>Appendix A: Matrix Factorization</h2>
+            <h2>Appendix B: Matrix Factorization</h2>
             <div class="col-md-4 column">
 
                 <h3>Overview</h3>
@@ -430,6 +426,29 @@
                 <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
 
             </div>
+        </div>
+
+        <div class="section" id="references">
+            <h2>References</h2>
+            <div class="col-md-12 column">
+                <p>
+                    [1] Image-based recommendations on styles and substitutes
+                    J. McAuley, C. Targett, J. Shi, A. van den Hengel
+                    SIGIR, 2015
+                </p>
+                <p>
+                    [2] Inferring networks of substitutable and complementary products
+                    J. McAuley, R. Pandey, J. Leskovec
+                    Knowledge Discovery and Data Mining, 2015
+                </p>
+                <p>
+                    [3] The BellKor Solution to the Netflix Grand Prize
+                    Y. Koren. 2008.
+                </p>
+
+
+            </div>
+
         </div>
         
     </div>
