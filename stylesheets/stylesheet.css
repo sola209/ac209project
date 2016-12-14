@@ -662,6 +662,12 @@ svg {
   margin: 20px;
 }
 
+#recommendations, #rec-books {
+  position: relative;
+  width: 100%;
+  margin:auto;
+}
+
 .rec-images {
   position:absolute;
   opacity:1;
