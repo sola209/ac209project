@@ -606,3 +606,71 @@ svg {
   width: 604px;
   height: 649px;
 }
+
+
+/*Everything relating to recommendations*/
+
+#genre-select, {
+  position: relative;
+  margin:auto;
+  width:100%;
+}
+
+#genres {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  height: 200px;
+}
+
+#genre-romance, #genre-thriller, #genre-uk {
+  margin: auto;
+  width: 100%;
+}
+
+#genre-romance img, #genre-thriller img, #genre-uk img {
+  position:absolute;
+  opacity:1;
+  text-align: center;
+  height: 150px;
+}
+
+.img1 {
+  top: 0px;
+  left: 0px;
+}
+
+.img2 {
+  top: 20px;
+  left: 30px;
+}
+
+.img3 {
+  top: 40px;
+  left: 60px;
+}
+
+#genres img:hover {
+    border-bottom: 5px solid orange;
+    z-index: 1001;
+}
+
+#genre-romance:hover, #genre-thriller:hover, #genre-uk:hover {
+  border: 2px solid grey;
+}
+
+#genre-select .row {
+  margin: 20px;
+}
+
+.rec-images {
+  position:absolute;
+  opacity:1;
+  text-align: center;
+}
+
+.rec-images img {
+  display:inline-block;
+  width:10%;
+  margin:auto;
+}

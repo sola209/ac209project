@@ -151,20 +151,20 @@
   $('#rec-images-1').fadeOut();
   $('#rec-images-2').fadeOut();
 
-    $('#myCarousel').bind('slide.bs.carousel', function (e) {
-        console.log('svent!');
-        var slideFrom = $(this).find('.active').index();
-        var slideTo = $(e.relatedTarget).index();
+  $('#myCarousel').bind('slide.bs.carousel', function (e) {
+      console.log('svent!');
+      var slideFrom = $(this).find('.active').index();
+      var slideTo = $(e.relatedTarget).index();
 
-        var removeTarget = $('#rec-images-' + slideFrom);
-        var addTarget = $('#rec-images-' + slideTo);
+      var removeTarget = $('#rec-images-' + slideFrom);
+      var addTarget = $('#rec-images-' + slideTo);
 
-        console.log(addTarget);
-        console.log(removeTarget);
-        removeTarget.fadeOut(1000);
-        addTarget.fadeIn(2000);
-        // console.log(removeTarget);
-    });
+      console.log(addTarget);
+      console.log(removeTarget);
+      removeTarget.fadeOut(1000);
+      addTarget.fadeIn(2000);
+      // console.log(removeTarget);
+  });
 
   </script>
 

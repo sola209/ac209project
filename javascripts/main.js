@@ -100,3 +100,38 @@ function dragended(d) {
     d.fx = null;
     d.fy = null;
 }
+
+
+// Recommendation stuff
+
+  $('#rec-images-0').fadeOut();
+  $('#rec-images-1').fadeOut();
+  $('#rec-images-2').fadeOut();
+
+var romance = d3.select("#genre-romance");
+var thriller = d3.select("#genre-thriller");
+var uk = d3.select("#genre-uk")
+var similar_user = d3.select("#similar-user")
+
+romance.on('click', function (e) {
+    similar_user.html("Your interests most closely match the user <a href=''>USERNAME</a>, who read the following titles: <br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5.");  
+    $('#rec-images-0').fadeIn();
+    $('#rec-images-1').fadeOut();
+    $('#rec-images-2').fadeOut();    
+
+});
+
+thriller.on('click', function (e) {
+    similar_user.html("Your interests most closely match the user <a href=''>USERNAME</a>, who read the following titles: <br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5.");  
+    $('#rec-images-0').fadeOut();
+    $('#rec-images-1').fadeIn();
+    $('#rec-images-2').fadeOut();
+});
+
+uk.on('click', function (e) {
+    similar_user.html("Your interests most closely match the user <a href=''>USERNAME</a>, who read the following titles: <br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5.");  
+    $('#rec-images-0').fadeOut();
+    $('#rec-images-1').fadeOut();
+    $('#rec-images-2').fadeIn();
+
+});
