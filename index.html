@@ -158,7 +158,7 @@
         </div>
 
         <div class="section" id="TopicData">
-            <h2>50 Shades of Amazon</h2>
+            <h2 class="sectiontitle">50 Shades of Amazon</h2>
             <div class="col-md-6 column">
 
                 <h3>Overrepresentation of Romance</h3>
@@ -319,48 +319,8 @@
           </div>
 
         </div>
-
-        <div class="section" id="text-analysis">
-            <h2 class="sectiontitle">Text Analysis</h2>
-            <div class="col-md-6 column">
-
-                <h3>Methods for Determining Text Attributes</h3>
-                <p><strong>Count Vectorizer:</strong></p>
-                <p><strong>Term Frequency (TF)</strong></p>
-                <p><strong>Inverse Document Frequency</strong></p>
-                <p><strong>TF-IDF</strong></p>
-
-
-
-
-            </div>
-            <div class="col-md-6 column">
-
-            <h3>Implementation</h3>
-            The text from each user's set of reviews was used as one method for determining similarity between users.
-            The following process was used to complete the text analysis:
-            <ol>
-                <li>The dataset was grouped by user, and for each user, text from all reviews was combined into one block of text.</li>
-                <li>A count vectorizer was used to get counts of all words in each block of text.
-                    A list of standard English stop words was used to remove very common words and prepositions from the text.</li>
-                <li>Text was cleaned of all html entities.</li>
-                <li>The result of the above is a "utility matrix" of users as rows and word counts as columns.</li>
-                <li>Next, the TF-IDF score was calculated for each word, such that the word counts in the utility matrix were updated with these scores.</li>
-                <li>The cosine similarity between each pair of users was calculated using their vectors of TF-IDF scores.</li>
-            </ol>
-
-            </div>
-        </div>
-        <div class="section" id="user-based">
-            <h2 class="sectiontitle">User Based Collaborative Filtering</h2>
-            <div class="col-md-6 column">
-            </div>
-            <div class="col-md-6 column">
-
-            </div>
-        </div>
         <div class="section" id="ratings">
-          <h2 class="sectiontitle">Ratings Predictions</h2>
+            <h2 class="sectiontitle">Predicting Ratings: Overview</h2>
             <div class="col-md-6 column">
 
                 <h3>Methods Considered</h3>
@@ -378,13 +338,123 @@
 
 
             <div class="col-md-6">
-            <h3>Results</h3>
+                <h3>Results</h3>
                 <img style="width: 75%"src="images/Asset 9.png"/>
 
 
             </div>
         </div>
 
+        <div class="section" id="appendixSA">
+            <h2 class="sectiontitle">Predicting Ratings Methods: Simple Averaging</h2>
+            <div class="col-md-6 column">
+
+                <h3>Initial: Constant Prediction</h3>
+
+                <p>The initial baseline is to simply predict the average of all the train data. Average Kindle Rating is a high 4.35, and by using this simple method we already
+                    achieve a low RMSE of .89 (as illustrated below).</p>
+                <div style="text-align:center"><img style="width: 50%"src="images/SA/SA_1.png"/></div> <br><br>
+                <p>Note, for the Netflix challenge, teams were trying to achieve
+                    an RMSE of .855.  This again illustrates the lack of variance within this data.</p>
+            </div>
+
+            <div class="col-md-6 column">
+                <h3>Weighted Average: Item and User Avg. Rating</h3>
+                <p>An improved baseline is to use a weighted sum of Item and User Average Rating.
+                    The below graph shows that the User Avg. Rating is more valuable than the Item Avg. Rating
+                    as the optimal combination of the two ratings is 20% Item Avg. and 80% User Avg.  This method already achieved an RMSE of .75. </p>
+                <div style="text-align:center"><img style="width: 50%"src="images/SA/SA_2.png"/> </div><br><br>
+                <p>Logically, given low variance of data and sparsity of data (we in fact do not have much data on each user/item),
+                    surpassing this already low baseline is quite difficult.</p>
+
+
+            </div>
+        </div>
+
+        <div class="section" id="appendixMF">
+            <h2 class="sectiontitle">Predicting Ratings Methods: Matrix Factorization</h2>
+            <div class="col-md-4 column">
+
+                <h3>Overview</h3>
+                <p>
+                    Our goal is to turn the user-item matrix <strong>R</strong> as per below:<br>
+                <div style="text-align:center"><img style="width: 350px"src="images/MF/MF_1.png"/> </div><br>
+                Into a completely filled predictions matrix <strong>R&#770 </strong> as per below: <br>
+                <img style="width: 350px"src="images/MF/MF_2.png"/><br>
+                By finding feature matrices <strong>P</strong> and <strong>Q</strong> to lead to:
+                <strong>R&#8776P*Q<sup>T</sup>=R&#770</strong><br>
+                <div style="text-align:center"> <img style="width: 350px"src="images/MF/MF_3.png"/></div><br>
+
+                </p>
+
+
+
+
+            </div>
+
+
+            <div class="col-md-4 column">
+                <h3>Stochastic Gradient Descent</h3>
+                <p>But how do we find <strong>P</strong> and <strong>Q</strong>?  We do this through Stochastic
+                    Gradient Descent (SGD).  We initialize <strong>P</strong> and <strong>Q</strong> to essentially randomized values.
+                    Once initialized, we have a prediction matrix <strong>R&#770 </strong> (equation i).  With predictions
+                    we can determine error values for every train data user-item pair (equation ii).  We then amend P and Q in the direction to reduce error for every train user-item pair (equations iii and iv).</p>
+                <img style="width: 100%"src="images/MF/MF_6.png"/>
+                <p>This process requires fixing the below parameters.</p>
+                <img style="width: 100%"src="images/MF/MF_7.png"/>
+                <br>
+                <br>
+                <p>We used a grid search to find optimal values for these parameters.</p>
+
+            </div>
+            <div class="col-md-4 column">
+                <h3>Implementation</h3>
+                <p>The below illustrates the improving RMSE from SGD.</p>
+                <img style="width: 80%"src="images/MF/MF_5.png"/>
+                <ul>
+                    <li><strong>Non-Library Implementation: </strong> Test RMSE of .80 </li>
+                    <li><strong>GraphLab Library: </strong> Test RMSE of .76</li>
+                    <li><strong>Combine SimpAvg and MF: </strong> Test RMSE of .74 (below graph shows Matrix Factorization weight of .3, SimpAvg weight of .7 was optimal)</li>
+                </ul>
+                <div style="text-align:center">
+                    <img style="width: 50%"src="images/MF/MF_8.png"/>
+                </div>
+                <br>
+
+                <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
+
+            </div>
+        </div>
+
+        <div class="section" id="text-analysis">
+            <h2 class="sectiontitle">Predicting Ratings Methods: User-based Collaborative Filtering</h2>
+            <div class="col-md-6 column">
+                <h3>Traditional User-based Collaborative Filtering</h3>
+
+
+
+            </div>
+            <div class="col-md-6 column">
+                <h3>User-based Collaborative Filtering with Text Analysis</h3>
+                The text from each user's set of reviews was used as one method for determining similarity between users.
+                The following process was used to complete the text analysis:
+                <ol>
+                    <li>The dataset was grouped by user, and for each user, text from all reviews was combined into one block of text.</li>
+                    <li>A count vectorizer was used to get counts of all words in each block of text.
+                        A list of standard English stop words was used to remove very common words and prepositions from the text.</li>
+                    <li>Text was cleaned of all html entities.</li>
+                    <li>The result of the above is a "utility matrix" of users as rows and word counts as columns.</li>
+                    <li>Next, the TF-IDF score was calculated for each word, such that the word counts in the utility matrix were updated with these scores.</li>
+                    <li>The cosine similarity between each pair of users was calculated using their vectors of TF-IDF scores.</li>
+                </ol>
+                <h3>Methods for Determining Text Attributes</h3>
+                <p><strong>Count Vectorizer:</strong></p>
+                <p><strong>Term Frequency (TF)</strong></p>
+                <p><strong>Inverse Document Frequency</strong></p>
+                <p><strong>TF-IDF</strong></p>
+
+            </div>
+        </div>
 
         <div class="section" id="conclusion">
             <h2 class="sectiontitle">Conclusions & Future Work</h2>
@@ -444,89 +514,9 @@
             </div>
         </div>
 
-        <div class="section" id="appendixSA">
-            <h2>Appendix A: Simple Average</h2>
-            <div class="col-md-6 column">
-
-                <h3>Initial: Constant Prediction</h3>
-
-                <p>The initial baseline is to simply predict the average of all the train data. Average Kindle Rating is a high 4.35, and by using this simple method we already
-                    achieve a low RMSE of .89 (as illustrated below).</p>
-                <div style="text-align:center"><img style="width: 50%"src="images/SA/SA_1.png"/></div> <br><br>
-                <p>Note, for the Netflix challenge, teams were trying to achieve
-                an RMSE of .855.  This again illustrates the lack of variance within this data.</p>
-            </div>
-
-            <div class="col-md-6 column">
-                <h3>Weighted Average: Item and User Avg. Rating</h3>
-                <p>An improved baseline is to use a weighted sum of Item and User Average Rating.
-                The below graph shows that the User Avg. Rating is more valuable than the Item Avg. Rating
-                as the optimal combination of the two ratings is 20% Item Avg. and 80% User Avg.  This method already achieved an RMSE of .75. </p>
-                <div style="text-align:center"><img style="width: 50%"src="images/SA/SA_2.png"/> </div><br><br>
-                <p>Logically, given low variance of data and sparsity of data (we in fact do not have much data on each user/item),
-                surpassing this already low baseline is quite difficult.</p>
-
-
-            </div>
-        </div>
-
-        <div class="section" id="appendixMF">
-            <h2>Appendix B: Matrix Factorization</h2>
-            <div class="col-md-4 column">
-
-                <h3>Overview</h3>
-                <p>
-                Our goal is to turn the user-item matrix <strong>R</strong> as per below:<br>
-                <div style="text-align:center"><img style="width: 350px"src="images/MF/MF_1.png"/> </div><br>
-                Into a completely filled predictions matrix <strong>R&#770 </strong> as per below: <br>
-                <img style="width: 350px"src="images/MF/MF_2.png"/><br>
-                    By finding feature matrices <strong>P</strong> and <strong>Q</strong> to lead to:
-                    <strong>R&#8776P*Q<sup>T</sup>=R&#770</strong><br>
-                <div style="text-align:center"> <img style="width: 350px"src="images/MF/MF_3.png"/></div><br>
-
-                </p>
-
-
-
-
-            </div>
-
-
-            <div class="col-md-4 column">
-                <h3>Stochastic Gradient Descent</h3>
-                <p>But how do we find <strong>P</strong> and <strong>Q</strong>?  We do this through Stochastic
-                Gradient Descent (SGD).  We initialize <strong>P</strong> and <strong>Q</strong> to essentially randomized values.
-                Once initialized, we have a prediction matrix <strong>R&#770 </strong> (equation i).  With predictions
-                we can determine error values for every train data user-item pair (equation ii).  We then amend P and Q in the direction to reduce error for every train user-item pair (equations iii and iv).</p>
-                <img style="width: 100%"src="images/MF/MF_6.png"/>
-                <p>This process requires fixing the below parameters.</p>
-                <img style="width: 100%"src="images/MF/MF_7.png"/>
-                <br>
-                <br>
-                <p>We used a grid search to find optimal values for these parameters.</p>
-
-            </div>
-            <div class="col-md-4 column">
-                <h3>Implementation</h3>
-                <p>The below illustrates the improving RMSE from SGD.</p>
-                 <img style="width: 80%"src="images/MF/MF_5.png"/>
-                <ul>
-                    <li><strong>Non-Library Implementation: </strong> Test RMSE of .80 </li>
-                    <li><strong>GraphLab Library: </strong> Test RMSE of .76</li>
-                    <li><strong>Combine SimpAvg and MF: </strong> Test RMSE of .74 (below graph shows Matrix Factorization weight of .3, SimpAvg weight of .7 was optimal)</li>
-                </ul>
-                <div style="text-align:center">
-                <img style="width: 50%"src="images/MF/MF_8.png"/>
-                </div>
-                <br>
-
-                <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
-
-            </div>
-        </div>
 
         <div class="section" id="references">
-            <h2>References</h2>
+            <h2 class="sectiontitle">References</h2>
             <div class="col-md-12 column">
                 <p>
                     [1] Image-based recommendations on styles and substitutes
