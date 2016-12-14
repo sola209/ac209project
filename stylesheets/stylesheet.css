@@ -605,6 +605,10 @@ svg {
 
 /*Everything relating to recommendations*/
 
+#rec-profiles h3{
+  text-align: left;
+}
+
 #genre-select, {
   position: relative;
   margin:auto;
@@ -641,12 +645,12 @@ svg {
 }
 
 .img2 {
-  top: 25px;
+  top: 15px;
   left: 40px;
 }
 
 .img3 {
-  top: 35px;
+  top: 15px;
   left: 80px;
 }
 
