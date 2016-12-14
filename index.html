@@ -158,6 +158,24 @@
             </div>
         </div>
 
+        <div class="section" id="TopicData">
+            <h2>50 Shades of Amazon</h2>
+            <div class="col-md-6 column">
+
+                <h3>Overrepresentation of Romance</h3>
+
+                <p>Incredibly 51% of the Reviews were Romance Novels (while only 18% of the products were Romance Novels).</p>
+                <div style="text-align:center"><img style="width: 75%"src="images/TopicData/TopicData1.png"/></div> <br><br>
+                <div style="text-align:center"><img style="width: 75%"src="images/TopicData/TopicData2.png"/></div> <br><br>
+
+            </div>
+
+            <div class="col-md-6 column">
+                <h3>Impact on Recommendations</h3>
+
+            </div>
+        </div>
+
 
 
         <div class="section" id="recs">
@@ -356,19 +374,26 @@
 
         <div class="section" id="appendixSA">
             <h2>Appendix A: Simple Average</h2>
-            <div class="col-md-4 column">
+            <div class="col-md-6 column">
 
-                <h3>Overview</h3>
+                <h3>Initial: Constant Prediction</h3>
 
+                <p>The initial baseline is to simply predict the average of all the train data. Average Kindle Rating is a high 4.35, and by using this simple method we already
+                    achieve a low RMSE of .89 (as illustrated below).</p>
+                <div style="text-align:center"><img style="width: 50%"src="images/SA/SA_1.png"/></div> <br><br>
+                <p>Note, for the Netflix challenge, teams were trying to achieve
+                an RMSE of .855.  This again illustrates the lack of variance within this data.</p>
             </div>
 
-            <div class="col-md-4 column">
-                <h3>Stochastic Gradient Descent</h3>
+            <div class="col-md-6 column">
+                <h3>Weighted Average: Item and User Avg. Rating</h3>
+                <p>An improved baseline is to use a weighted sum of Item and User Average Rating.
+                The below graph shows that the User Avg. Rating is more valuable than the Item Avg. Rating
+                as the optimal combination of the two ratings is 20% Item Avg. and 80% User Avg.  This method already achieved an RMSE of .75. </p>
+                <div style="text-align:center"><img style="width: 50%"src="images/SA/SA_2.png"/> </div><br><br>
+                <p>Logically, given low variance of data and sparsity of data (we in fact do not have much data on each user/item),
+                surpassing this already low baseline is quite difficult.</p>
 
-
-            </div>
-            <div class="col-md-4 column">
-                <h3>Implementation</h3>
 
             </div>
         </div>
@@ -380,12 +405,12 @@
                 <h3>Overview</h3>
                 <p>
                 Our goal is to turn the user-item matrix <strong>R</strong> as per below:<br>
-                    <img style="width: 350px"src="images/MF/MF_1.png"/> <br>
+                <div style="text-align:center"><img style="width: 350px"src="images/MF/MF_1.png"/> </div><br>
                 Into a completely filled predictions matrix <strong>R&#770 </strong> as per below: <br>
                 <img style="width: 350px"src="images/MF/MF_2.png"/><br>
                     By finding feature matrices <strong>P</strong> and <strong>Q</strong> to lead to:
                     <strong>R&#8776P*Q<sup>T</sup>=R&#770</strong><br>
-                    <img style="width: 350px"src="images/MF/MF_3.png"/><br>
+                <div style="text-align:center"> <img style="width: 350px"src="images/MF/MF_3.png"/></div><br>
 
                 </p>
 
@@ -416,7 +441,7 @@
                 <ul>
                     <li><strong>Non-Library Implementation: </strong> Test RMSE of .80 </li>
                     <li><strong>GraphLab Library: </strong> Test RMSE of .76</li>
-                    <li><strong>Combine SimpAvg and MF: </strong> Test RMSE of .74</li>
+                    <li><strong>Combine SimpAvg and MF: </strong> Test RMSE of .74 (below graph shows Matrix Factorization weight of .3, SimpAvg weight of .7 was optimal)</li>
                 </ul>
                 <div style="text-align:center">
                 <img style="width: 50%"src="images/MF/MF_8.png"/>
