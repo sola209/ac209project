@@ -344,10 +344,10 @@
 
                 <h3>Methods Considered</h3>
                 <ul>
-                    <li><strong>Simple Average:</strong></li>
+                    <li><strong>Simple Average: </strong>Baseline models using a combination of Train Data's Total Population Avg., Item Avg., and User Avg. Rating. See <i>Appendix A</i> for more details.</li>
                     <li><strong>Ratings-based User-based collaborative filtering</strong></li>
                     <li><strong>Review-based User-based collaborative filtering</strong></li>
-                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix. See <i>Appendix A</i> for more details</li>
+                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix. See <i>Appendix B</i> for more details.</li>
                 </ul>
 
 
@@ -376,7 +376,6 @@
                   improvement from a model that wasn’t much better than Simple Averaging.  Considering the sparsity of
                   the dataset and the less-variability in ratings, difficulty in improving on RMSE is understandable.
               </p>
-              <img style="width: 70%" src="images/Asset 11.png"/>
 
               <p>While less quantifiably measurable, item recommendations proved more fruitful.
                   Relying on item metadata and user-based collaborative filtering to make recommendations,
@@ -423,31 +422,28 @@
                 </p>
             </div>
         </div>
-        <div class="section" id="references">
-            <h2>References</h2>
-            <div class="col-md-12 column">
-                    <p>
-                        [1] Image-based recommendations on styles and substitutes
-                        J. McAuley, C. Targett, J. Shi, A. van den Hengel
-                        SIGIR, 2015
-                    </p>
-                    <p>
-                        [2] Inferring networks of substitutable and complementary products
-                        J. McAuley, R. Pandey, J. Leskovec
-                        Knowledge Discovery and Data Mining, 2015
-                    </p>
-                    <p>
-                        [3] The BellKor Solution to the Netflix Grand Prize
-                        Y. Koren. 2008.
-                    </p>
 
+        <div class="section" id="appendixSA">
+            <h2>Appendix A: Simple Average</h2>
+            <div class="col-md-4 column">
+
+                <h3>Overview</h3>
 
             </div>
 
+            <div class="col-md-4 column">
+                <h3>Stochastic Gradient Descent</h3>
+
+
+            </div>
+            <div class="col-md-4 column">
+                <h3>Implementation</h3>
+
+            </div>
         </div>
 
         <div class="section" id="appendixMF">
-            <h2>Appendix A: Matrix Factorization</h2>
+            <h2>Appendix B: Matrix Factorization</h2>
             <div class="col-md-4 column">
 
                 <h3>Overview</h3>
@@ -468,17 +464,60 @@
             </div>
 
 
-            <div class="col-md-4">
-                <h3>Application</h3>
-                <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
-                <img style="width: 400px"src="images/MF/MF_1.png"/>
-                <ul>
-                    <li><strong>Implementation by Hand: </strong> Breaking a single matrix into two features matrices </li>
-                    <li><strong>GraphLab Library: </strong></li>
-                    <li><strong>Test: </strong></li>
-                </ul>
+            <div class="col-md-4 column">
+                <h3>Stochastic Gradient Descent</h3>
+                <p>But how do we find <strong>P</strong> and <strong>Q</strong>?  We do this through Stochastic
+                Gradient Descent (SGD).  We initialize <strong>P</strong> and <strong>Q</strong> to essentially randomized values.
+                Once initialized, we have a prediction matrix <strong>R&#770 </strong> (equation i).  With predictions
+                we can determine error values for every train data user-item pair (equation ii).  We then amend P and Q in the direction to reduce error for every train user-item pair (equations iii and iv).</p>
+                <img style="width: 100%"src="images/MF/MF_6.png"/>
+                <p>This process requires fixing the below parameters.</p>
+                <img style="width: 100%"src="images/MF/MF_7.png"/>
+                <br>
+                <br>
+                <p>We used a grid search to find optimal values for these parameters.</p>
 
             </div>
+            <div class="col-md-4 column">
+                <h3>Implementation</h3>
+                <p>The below illustrates the improving RMSE from SGD.</p>
+                 <img style="width: 80%"src="images/MF/MF_5.png"/>
+                <ul>
+                    <li><strong>Non-Library Implementation: </strong> Test RMSE of .80 </li>
+                    <li><strong>GraphLab Library: </strong> Test RMSE of .76</li>
+                    <li><strong>Combine SimpAvg and MF: </strong> Test RMSE of .74</li>
+                </ul>
+                <div style="text-align:center">
+                <img style="width: 50%"src="images/MF/MF_8.png"/>
+                </div>
+                <br>
+
+                <p>Image Source: <a href="http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/">Img 1 and 2, </a><a href="http://www.slideshare.net/GravityRD/enhancing-matrix-factorization-through-initialization-for-implicit-feedback-databases">Img 3</a></p>
+
+            </div>
+        </div>
+
+        <div class="section" id="references">
+            <h2>References</h2>
+            <div class="col-md-12 column">
+                <p>
+                    [1] Image-based recommendations on styles and substitutes
+                    J. McAuley, C. Targett, J. Shi, A. van den Hengel
+                    SIGIR, 2015
+                </p>
+                <p>
+                    [2] Inferring networks of substitutable and complementary products
+                    J. McAuley, R. Pandey, J. Leskovec
+                    Knowledge Discovery and Data Mining, 2015
+                </p>
+                <p>
+                    [3] The BellKor Solution to the Netflix Grand Prize
+                    Y. Koren. 2008.
+                </p>
+
+
+            </div>
+
         </div>
         
     </div>
