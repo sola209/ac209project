@@ -115,7 +115,9 @@ var similar_user = d3.select("#similar-user")
 
 romance.on('click', function (e) {
     similar_user.html("Your interests most closely match the user <a href='https://www.amazon.com/gp/pdp/profile/AZ2EXXGD7FAD4'>Avidreader</a>, who read the following titles: " + 
-        "<br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5.");  
+        "<br><a href='https://www.amazon.com/exec/obidos/ASIN/B00408AQ98'>Her Dark Angel (Her Angel Romance Series Book 1)</a>, " + 
+        "<a href='https://www.amazon.com/exec/obidos/ASIN/B00439GLEI'>Forgotten Soul (Soul Searchers Series Book 1)</a>, and " + 
+        "<a href='https://www.amazon.com/exec/obidos/ASIN/B004AM59T6'>Vampire for Christmas</a>");
     $('#rec-images-0').fadeIn(1000);
     $('#rec-images-1').fadeOut(1000);
     $('#rec-images-2').fadeOut(1000);    
@@ -124,15 +126,19 @@ romance.on('click', function (e) {
 
 selfhelp.on('click', function (e) {
     similar_user.html("Your interests most closely match the user <a href='https://www.amazon.com/gp/pdp/profile/AA5HLEE8ND8TJ'>CagleVision</a>, who read the following titles: " + 
-        "<br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5.");  
+        "<br><a href='https://www.amazon.com/exec/obidos/ASIN/B00E39SCMC'>Alkaline Foods</a>, " + 
+        "<a href='https://www.amazon.com/exec/obidos/ASIN/B00FW6F93A'>Best Damn Advice Ever: 10 Real Signs that He's Cheating On You</a>, and " + 
+        "<a href='https://www.amazon.com/exec/obidos/ASIN/B00G9GOQFE'>The Jetstream of Success</a>");
     $('#rec-images-0').fadeOut(1000);
     $('#rec-images-1').fadeIn(1000);
     $('#rec-images-2').fadeOut(1000);
 });
 
 dystopia.on('click', function (e) {
-    similar_user.html("Your interests most closely match the user <a href='https://www.amazon.com/gp/pdp/profile/A2G5IFYYHFIQNB'>USN Chief, Ret..VT Town</a>, who read the following titles: " + 
-        "<br>TITLE1, TITLE2, TITLE3, TITLE4, TITLE5."); 
+    similar_user.html("Your interests most closely match the user <a href='https://www.amazon.com/gp/pdp/profile/A2G5IFYYHFIQNB'>Navy Vet...VT town</a>, who read the following titles: " + 
+        "<br><a href='https://www.amazon.com/exec/obidos/ASIN/B001V9KG4E'>Surviving the Fog</a>, " + 
+        "<a href='https://www.amazon.com/exec/obidos/ASIN/B002JCSFSQ'>The Birth of the Peacekeepers</a>, and " + 
+        "<a href='https://www.amazon.com/exec/obidos/ASIN/B004WXEVOW'>Diary of the Displaced</a>");
     $('#rec-images-0').fadeOut(1000);
     $('#rec-images-1').fadeOut(1000);
     $('#rec-images-2').fadeIn(1000);
