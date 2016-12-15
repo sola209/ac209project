@@ -114,7 +114,7 @@ var dystopia = d3.select("#genre-dystopia")
 var similar_user = d3.select("#similar-user")
 
 romance.on('click', function (e) {
-    similar_user.html("Your interests most closely match the user <a href='https://www.amazon.com/gp/pdp/profile/AZ2EXXGD7FAD4'>Avidreader</a>, who read the following titles: " + 
+    similar_user.html("Your interests most closely match the user <a href='https://www.amazon.com/gp/pdp/profile/AZ2EXXGD7FAD4'>Avidreader</a>, who read the following titles: " +
         "<br><a href='https://www.amazon.com/exec/obidos/ASIN/B00408AQ98'>Her Dark Angel (Her Angel Romance Series Book 1)</a>, " + 
         "<a href='https://www.amazon.com/exec/obidos/ASIN/B00439GLEI'>Forgotten Soul (Soul Searchers Series Book 1)</a>, and " + 
         "<a href='https://www.amazon.com/exec/obidos/ASIN/B004AM59T6'>Vampire for Christmas</a>");
@@ -153,8 +153,8 @@ $('#rec-text-2').fadeOut(10);
 
 var text_romance = d3.select("#text-romance");
 var text_thriller = d3.select("#text-thriller");
-var text_uk = d3.select("#text-uk")
-var text_similar_user = d3.select("#text-similar-user")
+var text_uk = d3.select("#text-uk");
+var text_similar_user = d3.select("#text-similar-user");
 
 text_romance.on('click', function (e) {
     $('#rec-text-0').fadeIn(300);

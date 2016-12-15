@@ -815,7 +815,12 @@ svg {
     text-align:left;
 
 }
-#text-rec-profiles h3{
+#text-description h3{
+  padding-left:60px;
+
+}
+
+#text-description p{
   padding-left:60px;
 
 }
