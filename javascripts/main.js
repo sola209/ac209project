@@ -144,3 +144,35 @@ dystopia.on('click', function (e) {
     $('#rec-images-2').fadeIn(1000);
 
 });
+
+// Recommendation stuff
+
+$('#rec-text-0').fadeOut(10);
+$('#rec-text-1').fadeOut(10);
+$('#rec-text-2').fadeOut(10);
+
+var text_romance = d3.select("#text-romance");
+var text_thriller = d3.select("#text-thriller");
+var text_uk = d3.select("#text-uk")
+var text_similar_user = d3.select("#text-similar-user")
+
+text_romance.on('click', function (e) {
+    $('#rec-text-0').fadeIn(300);
+    $('#rec-text-1').fadeOut(300);
+    $('#rec-text-2').fadeOut(300);
+
+});
+
+text_thriller.on('click', function (e) {
+    $('#rec-text-0').fadeOut(300);
+    $('#rec-text-1').fadeIn(300);
+    $('#rec-text-2').fadeOut(300);
+});
+
+text_uk.on('click', function (e) {
+    $('#rec-text-0').fadeOut(300);
+    $('#rec-text-1').fadeOut(300);
+    $('#rec-text-2').fadeIn(300);
+
+});
+

@@ -301,11 +301,11 @@
               </div>
             </div>
             <div class='row'>
-              <div id='similar-user'></div>
+              <div id='similar_user'></div>
             </div>
             <div class='row'>
               <div id='recommendations'>
-                <div id="rec-books"> 
+                <div id="rec-text-books">
                   <div id="rec-images-0" class="rec-images">
                       <h4>We recommend that you take a look at some of these books:</h4>
                       <img src="images/reviewer1/recs/book1.jpg" max-width="100" max-height="170">
@@ -497,7 +497,86 @@
 
             </div>
         </div>
+        <div class="section" id="text-rec-profiles">
 
+            <h3>Select a Review Below to Find Similar Users</h3>
+            <div id='text-select'>
+                <div id='text-genres' class='row'>
+                    <div class='col-md-4'>
+                        <div id='text-romance' class='text-genre'>
+                            <label>Hot to the Touch</label>
+
+                        <p>
+                            "This ebook is so <strong>steamy</strong>. It is <strong>hot to the touch</strong>. It had a little bit of <strong>romance</strong> at the end which was a pleasant surprise."                        </p>
+                        </div>
+                    </div>
+                    <div class='col-md-4'>
+                        <div id='text-thriller' class='text-genre'>
+                            <label>Ms. Livingston Hill</label>
+
+                            <p>"While I enjoyed reading this one, I found myself skipping parts that seemed <strong>"wordy"</strong> and drawn out. There's an excellent story to it but one has to dig for it.This has to be the best of Ms. <strong>Livingston's</strong>, yet. The story is so <strong>well written</strong> that one forgets the time period it depicts.
+                            </p>
+                        </div>
+                    </div>
+                    <div class='col-md-4'>
+                        <div id='text-uk' class='text-genre'>
+                            <label>Romantic but Poorly Edited</label>
+
+                            <p>
+                                "The <strong>editing</strong> could be <strong>better</strong> but the story is so so <strong>romantic</strong>. I didn't want to put it down. A beautiful story."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div id='text-similar-user'></div>
+                </div>
+                <div class='row'>
+                    <div id='text-recommendations'>
+                        <div id="rec-texts">
+                            <div id="rec-text-0" class="rec-text">
+                                <h4>Your review most closely matches the following users, who wrote these reviews:</h4><br>
+                                <p>
+                                    "This ebook is <strong>hot to the touch</strong>, and it has a <strong>romance</strong> story to it. This is a series and hard to read just one."                                </p>
+                                <p>
+                                    "This is a <strong>hot to the touch steamy</strong> read with a little <strong>romance</strong> in it. It has a good plot and good characters in it."                                </p>
+                                <p>
+                                    "This is a <strong>steamy romance story</strong> with lots of steam. The steam this story is <strong>hot to the touch</strong>. I enjoyed reading this ebook."                                </p>
+
+                            </div>
+                            <div id="rec-text-1" class="rec-text" >
+                                <h4>Your review most closely matches the following users, who wrote these reviews:</h4><br>
+
+                                <p>
+                                    "<strong>Grace Livingston Hill</strong> always has a great <strong>story line</strong>. She was a wonderful author. I love the way she brings in the need for faith in  our lives. what a great story, Grace Livingston Hill is my heroine. I love the simple, clean story-line."
+                                </p>
+                                <p>
+                                    "Reading this book makes me happy, sometimes the author does get a bit too <strong>wordy</strong>, but the story is so intense and the characters so <strong>well written</strong> that you don't really care."
+
+                                </p>
+                                <p>
+                                    "Books by <strong>Grace Livingston Hill</strong> are always great to reat. Phoebe Deane is no exception. A wonderful inspiring story. I have read most of Grace's books more than once and enjoy them each time I read them. Try one."
+                                </p>
+
+                            </div>
+                            <div id="rec-text-2" class="rec-text" >
+                                <h4>Your review most closely matches the following users, who wrote these reviews:</h4><br>
+
+                                <p>
+                                    "Great story, very <strong>romantic</strong> and lots of good scenario.  Strong heroin traits which I really enjoy. Could do with better <strong>editing</strong> and spelling corrections."                                </p>
+                                <p>
+                                    "These are good books, some <strong>editing</strong> needs to be done but over all there good. The story is interesting and the characters are fun to get to know."                                 </p>
+                                <p>
+                                    "This is a :) very good book sweet and <strong>romantic</strong> I do wish the ending was <strong>better</strong> and it was longer but I did enjoy this book."                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
         <div class="section" id="conclusion">
             <h2 class="sectiontitle">Conclusions & Future Work</h2>
           <div class="col-md-6 column">
@@ -532,15 +611,21 @@
                     use matrix operations in our predictive calculations.
                 </p>
 
+            <div class="col-md-5 column" id="split1">
                 <p><strong>Machine Learning Approach:</strong> Another interesting approach to this problem is a machine
-                    learning based approach. The Stanford article on recommender systems
-                    (http://infolab.stanford.edu/~ullman/mmds/ch9.pdf ) suggests a technique involving
+                    learning based approach. <a href="http://infolab.stanford.edu/~ullman/mmds/ch9.pdf">This chapter</a> on recommender systems suggests a technique involving
                     creating decision trees for each user, in which the predictors are attributes of
                     the item as shown in the below diagram. In our case, we could use book attributes
                     from the metadata dataset as the predictors.
                 </p>
-
             </div>
+                <div class="col-md-7 column">
+                    <img style="width: 100%"src="images/tree.png"/>
+                </div>
+
+
+
+        </div>
         </div>
 
 
@@ -561,6 +646,12 @@
                     [3] The BellKor Solution to the Netflix Grand Prize
                     Y. Koren. 2008.
                 </p>
+                <p>
+                    [4] Mining of Massive Datasets.
+                    J. Leskovec, A. Rajaraman, J. Ullman.
+                    Cambridge University Press, 2014
+                </p>
+
 
 
             </div>
