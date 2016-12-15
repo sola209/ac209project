@@ -709,6 +709,10 @@ svg {
   margin:auto;
 }
 
+.rec-images img:hover {
+    border-bottom: 5px solid orange;  
+}
+
 #rec-profiles {
   position: relative;
   width:100%;
