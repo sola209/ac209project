@@ -188,7 +188,7 @@
                 <p>The fact that the majority of the Review data are from a single genre makes surpassing Baseline Rating Predictions models
                 more difficult.  Specifically, our Ratings Prediction systems do not particularly benefit from determining what genres the user likes.  Instead our model
                     needs to determine, within the user's genre of choice, what differentiates a great book from a good book from the
-                users perspective.</p>
+                user's perspective.</p>
 
 
             </div>
@@ -337,17 +337,21 @@
             <div class="col-md-6 column">
 
                 <h3>Methods Considered</h3>
-                <p>The following four approaches were used for this task.</p>
+                <p>Root-Mean-Square-Deviation (RSME) is our main performance metric defined as per below:</p>
+                <div style="text-align:center"><img style="width: 35%"src="images/RatingsPredict/RMSE.png"/></div>
+
+                <p>The following four approaches were used for Ratings Prediction for a given User-Iterm pair.</p>
                 <ul>
 
-                    <li><strong>Simple Average: </strong>Baseline models using a combination of Train Data's Total Population Avg., Item Avg., and User Avg. Rating.</li>
+                    <li><strong>Simple Average: </strong>Baseline models using a combination of Train Data's Total Population Avg., Item Avg., and User Avg. Rating</li>
                     <li><strong>Ratings-based User-based collaborative filtering: </strong>Predicts user ratings based on the ratings of similar users, where similarity is based on ratings history</li>
                     <li><strong>Review-based User-based collaborative filtering: </strong>Predicts user ratings based on the ratings of similar users, where similarity is based on review text</li>
-                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix.</li>
+                    <li><strong>Matrix Factorization: </strong> Finds latent features by factorizing user-item matrix</li>
                 </ul>
 
-                <p>We managed to improve our Baseline Constant Average Predict model of .89 with an ensemble collaborative filtering model of .73.
-                Perhaps more interesting is why the Baseline Simple Averaging model (which produced an RMSE) was so difficult to surpass.</p>
+                <p>We improved upon the Baseline Constant Average Predict model of .89 with an ensemble collaborative filtering model that led to a RMSE of .73.
+                Of note, the Simple Averaging model produced an impressive RMSE of .75.  Difficulty to improve upon this method is due to the data's low variance and high sparsity. The Kindle
+                data is in fact 51x less-filled (more sparse) than the Netflix Data.</p>
                 <div style="text-align:center"><img style="width: 50%"src="images/RatingsPredict/NFAZ_Stats.png"/> </div><br><br>
 
 
@@ -356,11 +360,11 @@
             </div>
 
 
-            <div class="col-md-6">
+            <div class="col-md-6 column">
                 <h3>Results</h3>
-                <img style="width: 60%"src="images/Asset 9.png"/>
-                <p>Placeholder : explain RMSE</p>
-                <img style="width: 75%"src="images/sparse.png"/>
+                <div style="text-align:center"><img style="width: 60%"src="images/Asset 9.png"/></div>
+                <p>Illustrated below, for most users there are only received 5 reviews, making improvement on averaging models difficult</p>
+                    <div style="text-align:center"><img style="width: 65%"src="images/RatingsPredict/Sparse.png"/></div>
 
             </div>
         </div>
@@ -502,7 +506,7 @@
                   After investigating a range of models such as collaborative filtering and matrix factorization, we
                   lowered RMSE by 3% from the Simple Averaging baseline.  However the Netflix Challenge helps us
                   frame the significance of this improvement: Netflix waited 3 years and paid $1mm for a 10%
-                  improvement from a model that wasn’t much better than Simple Averaging.  Considering the sparsity of
+                  improvement from a model that was not much better than Simple Averaging.  Considering the sparsity of
                   the dataset and the less-variability in ratings, difficulty in improving on RMSE is understandable.
               </p>
 
@@ -536,10 +540,6 @@
                     from the metadata dataset as the predictors.
                 </p>
 
-                <p> <strong>Matrix Factorization:</strong> Given the size of our dataset, speed is a
-                    consideration for our predictive models.  Matrix Factorization is a relatively quick model
-                    that works well with this sort of recommendation problem. This would be a good initial enhancement from our baseline models.
-                </p>
             </div>
         </div>
 
