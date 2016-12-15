@@ -699,19 +699,19 @@ svg {
 #recommendations, #rec-books {
   position: relative;
   width: 100%;
-  margin:auto;
+  /*margin:auto;*/
 }
 
 .rec-images {
   position:absolute;
   opacity:1;
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .rec-images img {
   display:inline-block;
-  width:10%;
-  margin:auto;
+  width:120px;
+  /*margin:auto;*/
 }
 
 .rec-images img:hover {
@@ -722,6 +722,10 @@ svg {
   position: relative;
   width:100%;
   margin: auto;
+}
+
+#similar-user {
+  text-align: left;
 }
 
 /* Text Examples styles */
@@ -767,7 +771,6 @@ svg {
     height: 175px;
     border:2px solid lightgray;
     padding: 20px 20px 20px 20px;
-
 
 }
 
