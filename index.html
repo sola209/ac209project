@@ -604,11 +604,13 @@
           </div>
             <div class="col-md-6 column">
                 <h3>Future Work</h3>
-                <p><strong>Computational efficiency:</strong> The Amazon Kindle dataset encodes information for
-                    ~62,000 users and ~68,000 products. Due to memory and processing constraints, all of our present
-                    models sample a small subset of this information. In order to increase the volume of information
-                    available to the model, we will need to encode this data using a sparse matrix representation and
-                    use matrix operations in our predictive calculations.
+                <p><strong>Computational efficiency:</strong> The Amazon Kindle dataset encodes information for ~62,000 users and ~68,000 products.
+                    Due to memory and processing constraints, some of our present models sample a subset of
+                    this information (between 1k-10k of the total users depending on the model).
+                    Baseline Averaging Models and Matrix Factorization were completed using the full dataset by
+                    converting data into sparse matrix representations.  However when comparing methodologies we used
+                    the same data subset, to insure our comparisons were valid. For future research, improving our
+                    computational efficiency through data structures suited for sparse data would be valuable.
                 </p>
 
             <div class="col-md-5 column" id="split1">
